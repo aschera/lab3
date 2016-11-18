@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Lab 3</title>
+</head>
+<body>
+
+<nav> <!-- 
+<button id="menu" onclick="toggleMenu()"> Menu</button>
+<ul id="menu-box" class="list">
+  <li><a href="#">Export JSON </a></li>
+  <li><a href="#">Import JSON </a></li>
+</ul>
+-->  
+<button id="menu1" > Menu</button>
+<ul id="menu-box1" class="list">
+  <li><a href="#">Export JSON </a></li>
+  <li><a href="#">Import JSON </a></li>
+</ul>  
+</nav>
+  
+<main>
+  <br><br> 
+<select id='color-menu'>
+  
+  <option selected="selected" disabled="disabled">Choose option</option>
+  <option value="red">red</option>
+  <option value="blue">blue</option>
+  <option value="green">green</option>
+  <option value="yellow">yellow</option>
+</select> 
+  
+ <br><br> 
+
+   <textarea rows="1" cols="50">
+Choose a new color here. Example: "#c080ff".
+    </textarea> 
+  
+  <br><br> 
+  
+  <button id="circle" onclick="xxxfunction()" class="draw"> Circle</button>
+  <button id="triangle" onclick="xxxfunction()" class="draw"> Triangle</button>
+  <button id="triangle" onclick="xxxfunction()" class="draw"> Rectangle</button>
+  <button id="polygon" onclick="xxxfunction()" class="draw"> Polygon</button>
+    
+  <br><br> 
+  <div id='console'></div>
+  
+  <canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;"></canvas> 
+</main>
+
+</body>
+</html>
