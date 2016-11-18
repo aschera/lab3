@@ -33,9 +33,9 @@ toggle.addEventListener('click', function(event) {
 var e = document.getElementById("color-menu");
   var value = e.options[e.selectedIndex].value;
   var text = e.options[e.selectedIndex].text;
-
+ console.log(e.options[e.selectedIndex].value);
 let color = function(event) {
-  if(e.options[e.selectedIndex].value !== "Choose option")
+  if(e.options[e.selectedIndex].value !== "choice")
   print('Your Color:  ' + e.value);
 }
 e.addEventListener('click', color);
