@@ -1,0 +1,33 @@
+/*menu button*/
+#menu {border: 1px solid black}
+//menu
+#menu-box {display : none}
+
+ul
+{ 
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+li {
+position: relative;
+padding-left: 3px;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: left;
+    padding: 1px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #bbeebb;
+    color: black;
+}
+
+/*shape-buttons*/
+
+.draw {border: 1px solid black}
