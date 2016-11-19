@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="lab3.css">
+    <script type="text/javascript" src="lab3.js"></script>
+</head>
+<body>
+
+<div id="outPopUp">
+  <div class="Row">
+  <div class="Column">
+      
+<nav>  
+<button id="menu" onclick="toggleMenu()">Options</button>
+<ul id="menu-box" style="display: none">
+  <li><a href="index.html">rensa canvas.</a></li>
+  <li><a href="animal.html">rita cirkel/rektangel/triangel (polygon)</a></li>
+  <li><a href="pictures.html">exportera till JSON</a></li>
+</ul>
+</nav>
+      
+</div>
+  <div class="Column">Draw something!</div>
+  <div class="Column"></div>
+</div>
+    <div class="Row">
+    <div class="Column">
+      Choose a shape! <br>    
+      <button id="circle" onclick="shapeChooser()" class="draw"> Circle</button>
+      <button id="triangle" onclick="shapeChooser()" class="draw"> Triangle</button>
+      <button id="rectangle" onclick="shapeChooser()" class="draw"> Rectangle</button>
+      <button id="polygon" onclick="shapeChooser()" class="draw"> Polygon</button>
+    </div>
+    <div class="Column">
+        <canvas id="myCanvas"> This text is displayed if your browser does not support HTML5 Canvas. </canvas> 
+    </div>
+        <div class="Column">
+            Choose a color! <br>
+            <select id='color-menu'>
+              <option selected="selected" disabled="disabled">Choose option</option>
+              <option value="red">red</option>
+              <option value="blue">blue</option>
+              <option value="green">green</option>
+              <option value="yellow">yellow</option>
+            </select> 
+             <br><br> 
+
+   <textarea rows="1" cols="50">
+Choose a new color here. Example: "#c080ff".
+    </textarea> 
+        </div>
+</div>
+    <div class="Row">
+    <div class="Column"></div>
+    <div class="Column">Status bar:<div id='console'></div></div>
+    <div class="Column"></div>
+</div>
+</div>
+
+</body>
+</html>
