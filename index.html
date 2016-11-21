@@ -9,16 +9,21 @@
 </head>
 <body>
 
+
 <ul class="navigation">
     <li class="nav-item"><a href="#">Draw</a></li>
-    <li class="nav-item"><a href="#">Import/export JSON</a></li>
-    <li class="nav-item"><a href="#">Stop drawing</a></li>
-    <li class="nav-item"><a href="#">Clear canvas</a></li>
+    <li class="nav-item" id="circleMenu" onclick="showOne('whatwedo')"><a href="#">Circle</a></li>
+    <li class="nav-item"><a href="#">Triangle</a></li>
+    <li class="nav-item"><a href="#">Rectangle</a></li>
+    <li class="nav-item"><a href="#">Polygon</a></li>
+    
+    <li class="nav-item">Import/export JSON</li>
+    <li class="nav-item">Stop drawing</li>
+    <li class="nav-item">Clear canvas</li>
 </ul>
 
 <input type="checkbox" id="nav-trigger" onclick="toggleMenu()" class="nav-trigger" />
 <label for="nav-trigger"></label>
-
 <div class="site-wrap">
 
 <div id="outPopUp">
@@ -38,17 +43,22 @@
 </div>
     <div class="Row">
     <div class="Column">
-         Draw:
-  <button id="circle" class="draw"> Circle</button>
-  <button id="triangle" class="draw"> Triangle</button>
-  <button id="rectangle" class="draw"> Rectangle</button>
-  <button id="polygon" class="draw"> Polygon</button>
       <br><br>
-    Options:
-  <button id="stop" class="draw"> Stop</button>
-  <button id="clear" class="draw"> Clear</button>
+
       <br><br>
-    Choose a color:
+    
+    </div>
+        
+        <div id="canvas_box">
+        <canvas id="myCanvas" width="430"; height="300">
+            This text is displayed if your browser does not support HTML5 Canvas.
+        </canvas> 
+        </div>
+    
+        <div class="Column">
+                <div id="whatwedo">
+                    <h3>Instructions for drawing a circle</h3>
+                    <p>1: Choose a color for your circle.
     <select id='color-menu'>
         <option selected="selected" disabled="disabled">Choose option</option>
         <option value="red">red</option>
@@ -56,21 +66,23 @@
         <option value="green">green</option>
         <option value="yellow">yellow</option>
     </select>   
-    <br><br> 
-   <textarea rows="1" cols="50">
-Choose a new color here. Example: "#c080ff".
-    </textarea> 
-    </div>
-    <div class="Column">
-        <canvas id="myCanvas"> This text is displayed if your browser does not support HTML5 Canvas. </canvas> 
-    </div>
-        <div class="Column">
-
+    <br><br>Add other color: 
+   <textarea rows="1" cols="20">
+    </textarea> </p>
+                    <p>2: Choose center position and radius. <br>Click twice on the canvas. 1: center. 2: radius.</p>
+                    <p>3: Press draw button when you are done. <br>The circle will be drawn.
+                    </p>
+                    <p>
+                        <br><br>
+  <button id="draw" class="draw"> Draw</button>
+  <button id="stop" class="draw"> Stop</button>
+  <button id="clear" class="draw"> Clear</button></p>
+                </div>
         </div>
 </div>
     <div class="Row">
     <div class="Column"> <img src="2.jpg"></div>
-    <div class="Column">Status bar:<div id='console'></div></div>
+    <div class="Column">Status bar: <br><div id='console'></div></div>
     <div class="Column"><img src="3.jpg"></div>
 </div>
 </div>
@@ -80,10 +92,9 @@ Choose a new color here. Example: "#c080ff".
 
 
 <script> <!-- prints out text to status bar when buttons are pressed-->
-    document.getElementById("circle").addEventListener("click", function(){
-    print('You choose circle!');});
-    
-    document.getElementById("triangle").addEventListener("click", function(){
+
+ 
+   /* document.getElementById("triangle").addEventListener("click", function(){
     print('You choose triangle!');});
     
     document.getElementById("rectangle").addEventListener("click", function(){
@@ -96,7 +107,10 @@ Choose a new color here. Example: "#c080ff".
     print('You stopped drawing!');});
     
     document.getElementById("clear").addEventListener("click", function(){
-    print('You cleared the canvas!');});
+    print('You cleared the canvas!');}); */
 </script>
+    
+
+    
 </body>
 </html>
