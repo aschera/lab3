@@ -1,52 +1,41 @@
+
 /*menu button*/
 #menu {border: 1px solid black;}
 #menu1 {border: 1px solid black;}
+
 //menu
 #menu-box {display : none;}
 #menu-box1 {display : none;}
 
 #whatwedo {display : none;}
+#whatwedo1 {display : none;}
 
 #canvas_box { width: 100%; text-align:center; margin-top: 3px;}
 
 
-body {color: white;}
-
 #nav {
-            width: 100%;
-            top: 0%;
-            left: 0%;
-            margin-right: 15px;
+width: 100%;
+top: 0%;
+left: 0%;
+margin-right: 15px;
 }
 
 
-.Row
-{
-    display: table;
-    width: 100%; /*Optional*/
-    height:300px;
-    table-layout: fixed; /*Optional*/
-    border-spacing: 1px; /*Optional*/
-}
-.Column
-{
-    display: table-cell;
-    background-color: black; /*Optional*/
-    text-align: left;
-    vertical-align:top;
-    
-}
-
-#outPopUp {
-  position: absolute;
-  z-index: 0;
-  left: 04%; right: 20%;
-}
-
-canvas {background-color: black; height: 100%; width: auto; display: inline; }
+canvas { height: 100%; width: auto; display: inline; background-color: white;}
 
 .class {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+#console {width:90%;}
+
+.menuheading{
+  color: lightblue;
+  text-decoration: strong;
+  display: block;
+  padding: 1em;
+  font-size: 1.6em;
+  text-decoration: none;
+  transition: color 0.2s, background 0.5s;
 }
