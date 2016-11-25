@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="lab3.css">
+    <link rel="stylesheet" type="text/css" href="nav.css">
+    
+    <script type="text/javascript" src="lab3.js"></script>
+    <script type="text/javascript" src="lab2.js"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+<div class="container-fluid">
+  
+<ul class="navigation">
+    <li class="menuheading">Menu</li>
+
+    <li class="nav-item"><a href="#">Import/export JSON</a></li>
+    <li class="nav-item"><a href="#">Stop drawing</a></li>
+    <li class="nav-item"><a href="#">Clear canvas</a></li>
+</ul>
+
+<input type="checkbox" id="nav-trigger" onclick="toggleMenu()" class="nav-trigger" />
+<label for="nav-trigger"></label>
+    
+<div class="site-wrap">
+
+<!-- Circle-->
+    
+<div id="whatwedo">
+<div class="row">
+  <div class="col-sm-4"> <!--drawing menu instructions-->
+            <h3>Instructions</h3>
+      
+      <p>Circle and Rectangle shapes requires two points.<br>
+      Triangle requires three points.<br>
+      Polygon shapes can have any number of points.</p>
+      
+            <p>1: Choose a color for the <strong>line</strong>:
+                <br>
+                <select id='color-menu' onchange="colorMenu()">
+                    <option selected="selected" disabled="disabled">*</option>
+                    <option value="white">white</option>
+                    <option value="hotpink">hotpink</option>
+                    <option value="green">green</option>
+                    <option value="yellow">yellow</option>
+                </select>  
+          </p>  
+          <p>2: Choose a color for<strong> inside</strong>:  
+              <br>
+                    <input id="Ccolor" type="color" value="#ff0000" onchange="javascript:
+                    document.getElementById('chosen-color').value = document.getElementById('Ccolor').value; 
+                    chosenColor = document.getElementById('chosen-color').value;
+                    var s = document.getElementById('chosen-color');
+                    print('Your Inner Color:  ' + s.value);"/>
+                    
+                    <input id="chosen-color" type="text" value="#ff0000" maxlength="8"
+                    onkeydown="javascript:
+                    if (event.keyCode == 13){ 
+                    chosenColor = document.getElementById('chosen-color').value;
+                    var s = document.getElementById('chosen-color');
+                    print('Your Inner Color:  ' + s.value);}"/>
+                
+            </p>
+            <p>
+                2: Choose center position and radius by clicking on the canvas. 
+                First click sets the <strong>center</strong>.
+                Second click sets the <strong>radius</strong>.
+            </p>
+            <p>3: Press <strong>one of the shape-buttons below</strong> when you are done. The chosen shape will be drawn.
+            </p>
+            <p>
+               <br><br>
+              <button id="circle" class="draw" onclick="drawingCircle()"> Draw Circle</button>
+              <button id="triangle" class="" onclick="drawingTriangle()"> Draw triangle</button>
+              <button id="rectangle" class="" onclick="drawingRectangle()"> Draw rectanlge</button>
+              <button id="polygon" class="" onclick="drawingPolygon()"> Draw Polygon</button>  
+              <br> <br>      
+              <button id="stop" class="draw"> Stop</button>
+              <button id="clear" class="draw"> Clear</button>
+      </p>
+        
+      
+  </div> 
+    
+    
+  <div class="col-sm-8"> <!--canvas area-->
+      
+      <div id="canvas_box" class="canvas_box">
+            <canvas id="myCanvas" width="600"; height="400">
+                This text is displayed if your browser does not support HTML5 Canvas.
+            </canvas>
+          <p id="info"></p>
+        </div>
+            
+  </div>  
+</div>
+</div>
+
+    
+    
+    
+    
+<div class="row">
+  <div class="col-sm-12">
+      
+      <div id='console'></div>
+  </div>
+</div>    
+      
+    </div>
+    
+
+<script>
+    // color menu
+var chosenColor = '';
+var lineColor ='';
+function colorMenu(event) {
+  var e = document.getElementById("color-menu");
+  var value = e.options[e.selectedIndex].value;
+  var text = e.options[e.selectedIndex].text;
+  if(e.options[e.selectedIndex].value !== "choice"){
+  lineColor = e.options[e.selectedIndex].value;
+  print('Your Line Color:  ' + e.value);   
+  }
+e.addEventListener('click', colorMenu);
+}
+</script>
+
+
+</div>    
+</body>
+</html>
+
