@@ -16,7 +16,7 @@ margin-right: 15px;
 }
 
 
-canvas { height: 100%; width: auto; display: inline; background-color: white;}
+canvas { display: inline; background-color: white;}
 
 .class {
   display: block;

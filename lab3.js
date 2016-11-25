@@ -12,6 +12,86 @@ function toggleMenu() {
   }
 }
 
+//////////////////////////////////////////////////////////////
+
+// draw polygon function
+function drawP(x,y,x1,y1) {
+
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      context.beginPath();
+     
+context.moveTo(pointArray[0].x, pointArray[0].y);
+for( item = 1 ; item < pointArray.length-1 ; item++){
+    context.lineTo( pointArray[item].x , pointArray[item].y )
+}
+    
+      context.closePath();
+    
+      context.fillStyle = chosenColor;
+      context.fill();
+      context.lineWidth = 5;
+      context.strokeStyle = lineColor;
+      context.stroke();  
+  }
+
+//mouseclick draw polygon 2nd function
+function drawingPolygon() {
+
+    print('Pressing Draw Polygon button.');
+    print('Drawing your polygon.');
+    
+    drawP();    
+}
+
+//////////////////////////////////////////////////////////////
+// draw rectangle function
+function drawR(x,y,x1,y1) {
+    
+        this.x = x; //A
+        this.y = y;
+    
+        this.x1 = x1;  // C
+        this.y1 = y1;
+    
+        x3 = x1; // B
+	    y3 = y;
+	
+	    x4 = x; // D
+	    y4 = y1;
+    
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      context.beginPath();
+      context.moveTo(x, y); //A
+      context.lineTo(x3, y3); //B
+      context.lineTo(x1, y1); //C
+      context.lineTo(x4, y4); //D
+      context.closePath();
+    
+      context.fillStyle = chosenColor;
+      context.fill();
+      context.lineWidth = 5;
+      context.strokeStyle = lineColor;
+      context.stroke();  
+  }
+
+//mouseclick draw rectangle 2nd function
+function drawingRectangle() {
+    let x = pointArray[0].x;
+    let y = pointArray[0].y;
+    let x1 = pointArray[1].x;
+    let y1 = pointArray[1].y;
+    
+    print('Pressing Draw Rectangle button.');
+    print('Drawing your rectangle.');
+ 
+    drawR(x,y,x1,y1);    
+}
+
+
  //////////////////////////////////////////////////////////////
 // draw triangle function
 function drawT(x,y,x1,y1,x2,y2) {
