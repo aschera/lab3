@@ -12,52 +12,51 @@ function toggleMenu() {
   }
 }
 
+ //////////////////////////////////////////////////////////////
+// draw triangle function
+function drawT(x,y,x1,y1,x2,y2) {
+    
+        this.x = x;
+        this.y = y;
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
+    
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
 
-// ///////////////////////////////////////////////////////////////////////////////////////////////////
-//Circle menu and options.
-function showOne() {
-    var e = document.getElementById('whatwedo1');
-    e.style.display = 'none';
+      context.beginPath();
+      context.moveTo(x, y);
+      context.lineTo(x1, y1);
+      context.lineTo(x2, y2);
+      context.closePath();
     
-    var element = document.getElementById('whatwedo');
-    element.style.display = 'block';
-    print('Showing Circle options');
+      context.fillStyle = chosenColor;
+      context.fill();
+      context.lineWidth = 5;
+      context.strokeStyle = lineColor;
+      context.stroke();  
+  }
+
+//mouseclick draw triangle 2nd function
+function drawingTriangle() {
+    let x = pointArray[0].x;
+    let y = pointArray[0].y;
+    let x1 = pointArray[1].x;
+    let y1 = pointArray[1].y;
+    let x2 = pointArray[2].x;
+    let y2 = pointArray[2].y;
     
-    
-    var c = document.getElementById("myCanvas");  
-        var mouseX1;
-        var mouseY1;
-        var mouseX2;
-        var mouseY2;
-        var radius = 0; 
-        var j = 0;
-            c.addEventListener("click", function(){
-                if(j<1){
-                    coords = c.relMouseCoords(event);
-                        mouseX1 = coords.x;
-                        mouseY1 = coords.y;
-                    j++;
-                    print('your centerpoint is: ' + mouseX1 + ':x,' + mouseY1 + ':y.');
-                }
-                else if((j<2) && (j=1)){
-                    coords = c.relMouseCoords(event);
-                        mouseX2 = coords.x;
-                        mouseY2 = coords.y;
-                    j++;
-                    radius = Math.sqrt( 
-			                 ((mouseX1 -mouseX2)*(mouseX1 -mouseX2)) + 
-			                 ((mouseY1-mouseY2)*(mouseY1-mouseY2))
-			                 );
-                    print('your radius is: ' + radius);
-                    
-                    var drawIt = document.getElementById('draw');
-                    function drawing() { print('Pressing Draw button.');print('Drawing your circle.');
-                        draw(mouseX1,mouseY1,radius);
-                    }
-                    drawIt.onclick = drawing;
-                } 
-//draw circle
-function draw(x,y,radius) {
+    print('Pressing Draw Triangle button.');
+    print('Drawing your triangle.');
+ 
+    drawT(x,y,x1,y1,x2,y2);    
+}
+ //////////////////////////////////////////////////////////////
+
+//draw circle function
+function drawC(x,y,radius) {
     
         this.x = x;
         this.y = y;
@@ -71,75 +70,42 @@ function draw(x,y,radius) {
       context.fill();
       context.lineWidth = 5;
       context.strokeStyle = lineColor;
-      context.stroke();
-      
-  }}) 
-}
-// ///////////////////////////////////////////////////////////////////////////////////////////////////
+      context.stroke();  
+  } 
 
-// ///////////////////////////////////////////////////////////////////////////////////////////////////
-//Triangle menu and options.
-function showTwo() {
-    var e = document.getElementById('whatwedo');
-    e.style.display = 'none';
-    
-    var element = document.getElementById('whatwedo1');
-    element.style.display = 'block';
-    print('Showing Triangle options');
-    
-    
-    var c = document.getElementById("myCanvas");  
-        var mouseX1;
-        var mouseY1;
-        var mouseX2;
-        var mouseY2;
-        var radius = 0; 
-        var j = 0;
-            c.addEventListener("click", function(){
-                if(j<1){
-                    coords = c.relMouseCoords(event);
-                        mouseX1 = coords.x;
-                        mouseY1 = coords.y;
-                    j++;
-                    print('your centerpoint is: ' + mouseX1 + ':x,' + mouseY1 + ':y.');
-                }
-                else if((j<2) && (j=1)){
-                    coords = c.relMouseCoords(event);
-                        mouseX2 = coords.x;
-                        mouseY2 = coords.y;
-                    j++;
-                    radius = Math.sqrt( 
-			                 ((mouseX1 -mouseX2)*(mouseX1 -mouseX2)) + 
-			                 ((mouseY1-mouseY2)*(mouseY1-mouseY2))
-			                 );
-                    print('your radius is: ' + radius);
-                    
-                    var drawIt = document.getElementById('draw');
-                    function drawing() { print('Pressing Draw button.');print('Drawing your circle.');
-                        draw(mouseX1,mouseY1,radius);
-                    }
-                    drawIt.onclick = drawing;
-                } 
-//draw circle
-function draw(x,y,radius) {
-    
-        this.x = x;
-        this.y = y;
-    
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
-
-      context.beginPath();
-      context.arc(this.x, this.y, radius, 0,2 * Math.PI, false);
-      context.fillStyle = chosenColor;
-      context.fill();
-      context.lineWidth = 5;
-      context.strokeStyle = lineColor;
-      context.stroke();
-      
-  }}) 
+//mouseclick draw circle 2nd function
+function drawingCircle() {
+    let x = pointArray[0].x;
+    let y = pointArray[0].y;
+    let x1 = pointArray[1].x;
+    let y1 = pointArray[1].y;
+    let  radius = Math.sqrt( 
+		((x -x1)*(x -x1)) + 
+		((y-y1)*(y-y1))
+		);
+    print('Pressing Draw Circle button.');
+    print('Drawing your circle.');
+ 
+    drawC(x,y,radius);    
 }
-// ///////////////////////////////////////////////////////////////////////////////////////////////////
+ //////////////////////////////////////////////////////////////
+  
+
+
+// Getting the correct mouse coordinates
+var pointArray=[]; // to hold all the different points in order.
+
+window.onload=function(){
+let canvas = document.getElementById('myCanvas');
+let info = document.getElementById('info');
+canvas.addEventListener('click', function(event) {
+  let coords = canvas.relMouseCoords(event);
+  mouseX1 = coords.x;
+  mouseY1 = coords.y;
+  pointArray.push({x:mouseX1, y:mouseY1});
+  print('your point is: ' + mouseX1 + ':x,' + mouseY1 + ':y.');
+  let r = event.target.getBoundingClientRect();
+})
 
 // coordinates
 function relMouseCoords(event){
@@ -161,7 +127,7 @@ function relMouseCoords(event){
     return {x:canvasX, y:canvasY}
 }
 HTMLCanvasElement.prototype.relMouseCoords = relMouseCoords;
-
+}
 
 
 // status bar text function
@@ -179,20 +145,3 @@ function print(text) {
     e.innerText +=  text + '\n';
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

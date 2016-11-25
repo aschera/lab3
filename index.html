@@ -20,11 +20,7 @@
   
 <ul class="navigation">
     <li class="menuheading">Menu</li>
-    <li class="nav-item" id="circleMenu" onclick="showOne()"><a href="#">Circle</a></li>
-    <li class="nav-item" id="triangleMenu" onclick="showTwo()"><a href="#">Triangle</a></li>
-    <li class="nav-item"><a href="#">Rectangle</a></li>
-    <li class="nav-item"><a href="#">Polygon</a></li>
-    
+
     <li class="nav-item"><a href="#">Import/export JSON</a></li>
     <li class="nav-item"><a href="#">Stop drawing</a></li>
     <li class="nav-item"><a href="#">Clear canvas</a></li>
@@ -40,11 +36,9 @@
 <div id="whatwedo">
 <div class="row">
   <div class="col-sm-4"> <!--drawing menu instructions-->
-      
-      
-            <h3>Instructions Circle</h3>
+            <h3>Instructions</h3>
           
-            <p>1: Choose a color for the circle <strong>line</strong>:
+            <p>1: Choose a color for the <strong>line</strong>:
                 <br>
                 <select id='color-menu' onchange="colorMenu()">
                     <option selected="selected" disabled="disabled">*</option>
@@ -54,7 +48,7 @@
                     <option value="yellow">yellow</option>
                 </select>  
           </p>  
-          <p>2: Choose a color for<strong> inside</strong>  the circle:  
+          <p>2: Choose a color for<strong> inside</strong>:  
               <br>
                     <input id="Ccolor" type="color" value="#ff0000" onchange="javascript:
                     document.getElementById('chosen-color').value = document.getElementById('Ccolor').value; 
@@ -75,14 +69,18 @@
                 First click sets the <strong>center</strong>.
                 Second click sets the <strong>radius</strong>.
             </p>
-            <p>3: Press <strong>draw</strong> when you are done.
+            <p>3: Press <strong>one of the shape-buttons below</strong> when you are done. The chosen shape will be drawn.
             </p>
             <p>
                <br><br>
-              <button id="draw" class="draw" > Draw</button>
-                
+              <button id="circle" class="draw" onclick="drawingCircle()"> Draw Circle</button>
+              <button id="triangle" class="" onclick="drawingTriangle()"> Draw triangle</button>
+              <button id="rectangle" class=""> Draw rectanlge</button>
+              <button id="polygon" class=""> Draw Polygon</button>  
+              <br>    
               <button id="stop" class="draw"> Stop</button>
-              <button id="clear" class="draw"> Clear</button></p>
+              <button id="clear" class="draw"> Clear</button>
+      </p>
         
       
   </div> 
@@ -91,80 +89,16 @@
   <div class="col-sm-8"> <!--canvas area-->
       
       <div id="canvas_box" class="canvas_box">
-            <canvas id="myCanvas" width="500"; height="400">
+            <canvas id="myCanvas" width="200"; height="200">
                 This text is displayed if your browser does not support HTML5 Canvas.
-            </canvas> 
+            </canvas>
+          <p id="info"></p>
         </div>
             
   </div>  
 </div>
 </div>
 
-<!-- Triangle-->
-    
-<div id="whatwedo1">
-<div class="row">
-  <div class="col-sm-4"> <!--drawing menu instructions-->
-      
-      
-            <h3>Instructions Triangle</h3>
-          
-            <p>1: Choose a color for the triangle <strong>line</strong>:
-                <br>
-                <select id='color-menu' onchange="colorMenu()">
-                    <option selected="selected" disabled="disabled">*</option>
-                    <option value="white">white</option>
-                    <option value="hotpink">hotpink</option>
-                    <option value="green">green</option>
-                    <option value="yellow">yellow</option>
-                </select>  
-          </p>  
-          <p>2: Choose a color for<strong> inside</strong>  the triangle:  
-              <br>
-                    <input id="Ccolor" type="color" value="#ff0000" onchange="javascript:
-                    document.getElementById('chosen-color').value = document.getElementById('Ccolor').value; 
-                    chosenColor = document.getElementById('chosen-color').value;
-                    var s = document.getElementById('chosen-color');
-                    print('Your Inner Color:  ' + s.value);"/>
-                    
-                    <input id="chosen-color" type="text" value="#ff0000" maxlength="8"
-                    onkeydown="javascript:
-                    if (event.keyCode == 13){ 
-                    chosenColor = document.getElementById('chosen-color').value;
-                    var s = document.getElementById('chosen-color');
-                    print('Your Inner Color:  ' + s.value);}"/>
-                
-            </p>
-            <p>
-                2: Choose center position and radius by clicking on the canvas. 
-                First click sets the <strong>center</strong>.
-                Second click sets the <strong>radius</strong>.
-            </p>
-            <p>3: Press <strong>draw</strong> when you are done.
-            </p>
-            <p>
-               <br><br>
-              <button id="draw" class="draw" > Draw</button>
-                
-              <button id="stop" class="draw"> Stop</button>
-              <button id="clear" class="draw"> Clear</button></p>
-        
-      
-  </div> 
-    
-    
-  <div class="col-sm-8"> <!--canvas area-->
-      
-      <div id="canvas_box" class="canvas_box">
-            <canvas id="myCanvas" width="500"; height="400">
-                This text is displayed if your browser does not support HTML5 Canvas.
-            </canvas> 
-        </div>
-            
-  </div>  
-</div>
-</div>
-    
     
     
     
@@ -175,13 +109,10 @@
       <div id='console'></div>
   </div>
 </div>    
+      
+    </div>
     
-        
-    
-</div>
-    
-    
-   
+
 <script>
     // color menu
 var chosenColor = '';
@@ -190,34 +121,16 @@ function colorMenu(event) {
   var e = document.getElementById("color-menu");
   var value = e.options[e.selectedIndex].value;
   var text = e.options[e.selectedIndex].text;
-
   if(e.options[e.selectedIndex].value !== "choice"){
   lineColor = e.options[e.selectedIndex].value;
   print('Your Line Color:  ' + e.value);   
   }
 e.addEventListener('click', colorMenu);
 }
+</script>
 
-</script>
-<script> <!-- prints out text to status bar when buttons are pressed-->
- 
-   /* document.getElementById("triangle").addEventListener("click", function(){
-    print('You choose triangle!');});
-    
-    document.getElementById("rectangle").addEventListener("click", function(){
-    print('You choose rectangle!');});
-    
-    document.getElementById("polygon").addEventListener("click", function(){
-    print('You choose polygon!');});
-    
-    document.getElementById("stop").addEventListener("click", function(){
-    print('You stopped drawing!');});
-    
-    document.getElementById("clear").addEventListener("click", function(){
-    print('You cleared the canvas!');}); */
-</script>
-    
 
 </div>    
 </body>
 </html>
+
