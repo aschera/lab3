@@ -1,3 +1,15 @@
+var currentShape = {};
+
+//Export to JSON
+function exportShape(){
+    var canvas = document.getElementById('myCanvas');
+    JSON.stringify(currentShape);
+    console.log(currentShape);
+};
+
+
+//////////////////////////////////////////////////////////////
+
 //Toggle menu
 function toggleMenu() {
   var menuBox = document.getElementById('nav-trigger');    
@@ -41,8 +53,12 @@ function drawingPolygon() {
 
     print('Pressing Draw Polygon button.');
     print('Drawing your polygon.');
+     
+    drawP();
     
-    drawP();    
+    var shapeP = new Polygon(pointArray);
+    console.log(shapeP);
+    currentShape = shapeP;
 }
 
 //////////////////////////////////////////////////////////////
@@ -88,7 +104,11 @@ function drawingRectangle() {
     print('Pressing Draw Rectangle button.');
     print('Drawing your rectangle.');
  
-    drawR(x,y,x1,y1);    
+    drawR(x,y,x1,y1); 
+    
+    var shapeR = new Rectangle(x,y,x1,y1);
+    console.log(shapeR);
+    currentShape = shapeR;
 }
 
 
@@ -131,7 +151,11 @@ function drawingTriangle() {
     print('Pressing Draw Triangle button.');
     print('Drawing your triangle.');
  
-    drawT(x,y,x1,y1,x2,y2);    
+    drawT(x,y,x1,y1,x2,y2);
+    
+    var shapeT = new Triangle(x,y,x1,y1,x2,y2);
+    console.log(shapeT);
+    currentShape = shapeT;
 }
  //////////////////////////////////////////////////////////////
 
@@ -165,8 +189,12 @@ function drawingCircle() {
 		);
     print('Pressing Draw Circle button.');
     print('Drawing your circle.');
- 
-    drawC(x,y,radius);    
+
+    drawC(x,y,radius); 
+    
+    var shapeC = new Circle(x,y,radius);
+    console.log(shapeC);
+    currentShape = shapeC;
 }
  //////////////////////////////////////////////////////////////
   
@@ -209,6 +237,7 @@ function relMouseCoords(event){
 HTMLCanvasElement.prototype.relMouseCoords = relMouseCoords;
 }
 
+//////////////////////////////////////////////////////////////
 
 // status bar text function
 function print(text) {
@@ -216,7 +245,7 @@ function print(text) {
   let lista = con.getElementsByTagName('pre');
   if( lista.length === 0 ) {  
     let e = document.createElement('pre');
-    e.style.backgroundColor = 'lightblue';
+    e.style.border = '1px solid #000000';
     e.style.color = 'black';
     e.innerText = text + '\n';
     con.appendChild(e);

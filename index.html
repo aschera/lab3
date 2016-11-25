@@ -20,10 +20,9 @@
   
 <ul class="navigation">
     <li class="menuheading">Menu</li>
+    <li class="nav-item"><a href="#" onclick="exportShape()">Export JSON</a></li>
+    
 
-    <li class="nav-item"><a href="#">Import/export JSON</a></li>
-    <li class="nav-item"><a href="#">Stop drawing</a></li>
-    <li class="nav-item"><a href="#">Clear canvas</a></li>
 </ul>
 
 <input type="checkbox" id="nav-trigger" onclick="toggleMenu()" class="nav-trigger" />
@@ -93,7 +92,7 @@
   <div class="col-sm-8"> <!--canvas area-->
       
       <div id="canvas_box" class="canvas_box">
-            <canvas id="myCanvas" width="600"; height="400">
+            <canvas id="myCanvas" width="600"; height="400" style="border:1px solid #000000;">
                 This text is displayed if your browser does not support HTML5 Canvas.
             </canvas>
           <p id="info"></p>
