@@ -8,6 +8,8 @@
     <script type="text/javascript" src="lab3.js"></script>
     <script type="text/javascript" src="lab2.js"></script>
     
+    <script src="https://use.fontawesome.com/c0110fafc2.js"></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,8 +21,24 @@
 <div class="container-fluid">
   
 <ul class="navigation">
-    <li class="menuheading">Menu</li>
-    <li class="nav-item"><a href="#" onclick="exportShape()">Export JSON</a></li>
+    <li class="menuheading">DRAW</li>
+    <li class="nav-item"><a href="#" onclick="drawingCircle()"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp; Circle</a></li>
+    <li class="nav-item"><a href="#" onclick="drawingTriangle()"> <i class="fa fa-caret-up" aria-hidden="true"></i>&nbsp; Triangle</a></li>
+    <li class="nav-item"><a href="#" onclick="drawingRectangle()"> <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; Rectangle</a></li>
+    <li class="nav-item"><a href="#" onclick="drawingPolygon()"> <i class="fa fa-window-close-o" aria-hidden="true"></i>&nbsp; Polygon</a></li>
+    
+    <li class="nav-item"><a href="#" ></a></li>
+    
+    <li class="nav-item"><a href="#" onclick=""><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; STOP</a></li>
+    <li class="nav-item"><a href="#" onclick=""><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; CLEAR</a></li>
+    
+    <li class="menuheading">JSON</li>
+    <li class="nav-item"><a href="#" onclick="exportShape()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Export JSON</a></li>
+    <li class="nav-item"><a href="#" ></a></li>
+    <li class="nav-item"><a href="#" onclick="importShape()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; Import Circle</a></li>
+    <li class="nav-item"><a href="#" onclick="importShape1()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Import Triangle</a></li>
+    <li class="nav-item"><a href="#" onclick="importShape2()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Import Rectangle</a></li>
+    <li class="nav-item"><a href="#" onclick="importShape2()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Import Polygon</a></li>
     
 
 </ul>
@@ -35,11 +53,14 @@
 <div id="whatwedo">
 <div class="row">
   <div class="col-sm-4"> <!--drawing menu instructions-->
-            <h3>Instructions</h3>
+      <div id='welcome'>Open menu to begin.</div>
       
-      <p>Circle and Rectangle shapes requires two points.<br>
-      Triangle requires three points.<br>
-      Polygon shapes can have any number of points.</p>
+      <div id="instruction">
+               <h3>Instructions</h3>
+      
+      <p> - Circle and Rectangle shapes requires 2 points.<br>
+       - Triangle requires 3 points.<br>
+       - Polygon shapes can have &#8734; number of points.</p>
       
             <p>1: Choose a color for the <strong>line</strong>:
                 <br>
@@ -68,22 +89,12 @@
                 
             </p>
             <p>
-                2: Choose center position and radius by clicking on the canvas. 
-                First click sets the <strong>center</strong>.
-                Second click sets the <strong>radius</strong>.
+                2: Choose your points my clicking on the canvas to the right.
             </p>
-            <p>3: Press <strong>one of the shape-buttons below</strong> when you are done. The chosen shape will be drawn.
-            </p>
-            <p>
-               <br><br>
-              <button id="circle" class="draw" onclick="drawingCircle()"> Draw Circle</button>
-              <button id="triangle" class="" onclick="drawingTriangle()"> Draw triangle</button>
-              <button id="rectangle" class="" onclick="drawingRectangle()"> Draw rectanlge</button>
-              <button id="polygon" class="" onclick="drawingPolygon()"> Draw Polygon</button>  
-              <br> <br>      
-              <button id="stop" class="draw"> Stop</button>
-              <button id="clear" class="draw"> Clear</button>
-      </p>
+            <p>3: Press <strong>one of the shape-buttons to the left</strong> when you are done. The chosen shape will be drawn.
+            </p> 
+      </div>
+
         
       
   </div> 
@@ -92,7 +103,7 @@
   <div class="col-sm-8"> <!--canvas area-->
       
       <div id="canvas_box" class="canvas_box">
-            <canvas id="myCanvas" width="600"; height="400" style="border:1px solid #000000;">
+            <canvas id="myCanvas" width="775"; height="500" style="border:1px solid #000000;">
                 This text is displayed if your browser does not support HTML5 Canvas.
             </canvas>
           <p id="info"></p>

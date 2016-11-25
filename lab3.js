@@ -2,24 +2,80 @@ var currentShape = {};
 
 //Export to JSON
 function exportShape(){
+    print('Pressed Exporting JSON button');
     var canvas = document.getElementById('myCanvas');
-    JSON.stringify(currentShape);
-    console.log(currentShape);
+    var stringed = JSON.stringify(currentShape);
+    
+    console.log(stringed);
+    print('Your JSON object has been exported! ' + stringed);
 };
 
+//////////////////////////////////////////////////////////////
 
+// Import JSON Circle
+function importShape(){
+    var text = prompt('Insert JSON object string');
+    var canvas = document.getElementById('myCanvas');
+    currentShape = JSON.parse(text);
+
+    let x = currentShape.x;
+    let y = currentShape.y;
+    let radius =   currentShape.radius;
+    print('Your JSON object has been imported!');
+   drawC(x,y,radius);
+
+};
+
+// Import JSON Triangle
+function importShape1(){
+    var text = prompt('Insert JSON object string');
+    var canvas = document.getElementById('myCanvas');
+    currentShape = JSON.parse(text);
+
+    let x = currentShape.x1;
+    let y = currentShape.y1;
+    let x1 = currentShape.x2;
+    let y1 = currentShape.y2;
+    let x2 = currentShape.x3;
+    let y2 = currentShape.y3;
+    print('Your JSON object has been imported!');
+   drawT(x,y,x1,y1,x2,y2);
+
+};
+
+// Import JSON Rectangle
+function importShape2(){
+    var text = prompt('Insert JSON object string');
+    var canvas = document.getElementById('myCanvas');
+    currentShape = JSON.parse(text);
+
+    let x = currentShape.x1;
+    let y = currentShape.y1;
+    let x1 = currentShape.x2;
+    let y1 = currentShape.y2;
+print('Your JSON object has been imported!');
+   drawR(x,y,x1,y1);
+
+};
 //////////////////////////////////////////////////////////////
 
 //Toggle menu
 function toggleMenu() {
-  var menuBox = document.getElementById('nav-trigger');    
+    
+  var menuBox = document.getElementById('nav-trigger');
+  var welcomeBox = document.getElementById('welcome');
+  var instructionBox = document.getElementById('instruction');    
   if(menuBox.style.display === "block") { 
     // if is menuBox displayed, hide it
     menuBox.style.display = "none";
+    welcomeBox.style.display = "block";
+    instructionBox.style.display = "none";  
     print('menu is hidden!');
   }
   else { // if is menuBox hidden, display it
     menuBox.style.display = "block";
+    welcomeBox.style.display = "none";
+    instructionBox.style.display = "block";
     print('menu is shown!');
   }
 }

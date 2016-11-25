@@ -3,7 +3,7 @@
 #menu {border: 1px solid black;}
 #menu1 {border: 1px solid black;}
 
-
+#instruction{display:none}
 
 #canvas_box { width: 100%; text-align:center; margin-top: 3px;}
 
