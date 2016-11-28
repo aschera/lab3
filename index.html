@@ -27,18 +27,19 @@
     <li class="nav-item"><a href="#" onclick="drawingRectangle()"> <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; Rectangle</a></li>
     <li class="nav-item"><a href="#" onclick="drawingPolygon()"> <i class="fa fa-window-close-o" aria-hidden="true"></i>&nbsp; Polygon</a></li>
     
-    <li class="nav-item"><a href="#" ></a></li>
+    <br>
     
-    <li class="nav-item"><a href="#" onclick=""><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; STOP</a></li>
-    <li class="nav-item"><a href="#" onclick=""><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; CLEAR</a></li>
+    <li class="nav-item"><a href="#" onclick=""><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; Stop</a></li>
+    <li class="nav-item"><a href="#" onclick="clearCanvas()"><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; Clear</a></li>
     
     <li class="menuheading">JSON</li>
     <li class="nav-item"><a href="#" onclick="exportShape()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Export JSON</a></li>
-    <li class="nav-item"><a href="#" ></a></li>
-    <li class="nav-item"><a href="#" onclick="importShape()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; Import Circle</a></li>
-    <li class="nav-item"><a href="#" onclick="importShape1()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Import Triangle</a></li>
-    <li class="nav-item"><a href="#" onclick="importShape2()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Import Rectangle</a></li>
-    <li class="nav-item"><a href="#" onclick="importShape2()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Import Polygon</a></li>
+
+   <br>
+    
+    
+    <li class="nav-item"><a href="#" onclick="importJSON()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; Import JSON</a></li>
+    <li><input type="text" id="import" value="" length="15" placeholder="Enter JSON String"/></li>
     
 
 </ul>
@@ -51,21 +52,27 @@
 <!-- Circle-->
     
 <div id="whatwedo">
-<div class="row">
+    <div id='welcome'>Open menu to begin.</div>
+<div class="row"> 
   <div class="col-sm-4"> <!--drawing menu instructions-->
-      <div id='welcome'>Open menu to begin.</div>
+      
       
       <div id="instruction">
-               <h3>Instructions</h3>
-      
-      <p> - Circle and Rectangle shapes requires 2 points.<br>
-       - Triangle requires 3 points.<br>
-       - Polygon shapes can have &#8734; number of points.</p>
-      
-            <p>1: Choose a color for the <strong>line</strong>:
+          <br>
+          <div id ="intro">
+            
+              <h4>Choose points</h4>
+           <p>  - Circle and Rectangle shapes requires 2 points.<br>
+                - Triangle requires 3 points.<br>
+                - Polygon shapes can have &#8734; number of points.</p>
+          </div>
+            <br>
+            <div id="colorsbox">
+                <h4>Choose colors</h4>
+                <p>1: Choose a color for the <strong>line</strong>:
                 <br>
                 <select id='color-menu' onchange="colorMenu()">
-                    <option selected="selected" disabled="disabled">*</option>
+                    <option  disabled selected>Select:</option>
                     <option value="white">white</option>
                     <option value="hotpink">hotpink</option>
                     <option value="green">green</option>
@@ -80,19 +87,18 @@
                     var s = document.getElementById('chosen-color');
                     print('Your Inner Color:  ' + s.value);"/>
                     
-                    <input id="chosen-color" type="text" value="#ff0000" maxlength="8"
+                    <input id="chosen-color" type="text" value="#ff0000" length="8" maxlength="7"
                     onkeydown="javascript:
                     if (event.keyCode == 13){ 
                     chosenColor = document.getElementById('chosen-color').value;
                     var s = document.getElementById('chosen-color');
-                    print('Your Inner Color:  ' + s.value);}"/>
-                
+                    print('Your Inner Color:  ' + s.value);
+                    addColorToSelect();
+                    }"/>
+                <button id="add">ADD</button>
             </p>
-            <p>
-                2: Choose your points my clicking on the canvas to the right.
-            </p>
-            <p>3: Press <strong>one of the shape-buttons to the left</strong> when you are done. The chosen shape will be drawn.
-            </p> 
+            </div>
+        
       </div>
 
         
@@ -103,7 +109,7 @@
   <div class="col-sm-8"> <!--canvas area-->
       
       <div id="canvas_box" class="canvas_box">
-            <canvas id="myCanvas" width="775"; height="500" style="border:1px solid #000000;">
+            <canvas id="myCanvas" width="775"; height="430" style="border:5px solid lightblue"; margin="0 0 10px 0"; padding="0em 1em">
                 This text is displayed if your browser does not support HTML5 Canvas.
             </canvas>
           <p id="info"></p>
@@ -128,7 +134,7 @@
     
 
 <script>
-    // color menu
+// color menu
 var chosenColor = '';
 var lineColor ='';
 function colorMenu(event) {
@@ -140,6 +146,19 @@ function colorMenu(event) {
   print('Your Line Color:  ' + e.value);   
   }
 e.addEventListener('click', colorMenu);
+}
+</script>
+
+<script>
+function addColorToSelect(){
+    var k = document.getElementById('color-menu');
+    var option = document.createElement("option");
+    chosenColor = document.getElementById('chosen-color').value;
+    var s = document.getElementById('chosen-color');
+    option.text = s.value;
+    k.add(option);
+    k.selectedIndex = option;
+    print('Added color: ' + s.value + ' to Select menu');
 }
 </script>
 

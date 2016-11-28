@@ -6,8 +6,25 @@ function exportShape(){
     var canvas = document.getElementById('myCanvas');
     var stringed = JSON.stringify(currentShape);
     
-    console.log(stringed);
+    console.log(currentShape instanceof Circle);
     print('Your JSON object has been exported! ' + stringed);
+};
+
+//////////////////////////////////////////////////////////////
+
+
+// Import JSON 
+function importJSON(){
+    var imported = document.getElementById('import').value;
+    var canvas = document.getElementById('myCanvas');
+    currentShape = JSON.parse(imported);
+
+    let x = currentShape.x;
+    let y = currentShape.y;
+    let radius =   currentShape.radius;
+    print('Your JSON object has been imported! ' + imported);
+   drawC(x,y,radius);
+
 };
 
 //////////////////////////////////////////////////////////////
@@ -21,7 +38,7 @@ function importShape(){
     let x = currentShape.x;
     let y = currentShape.y;
     let radius =   currentShape.radius;
-    print('Your JSON object has been imported!');
+    print('Your JSON object has been imported!' + currentShape);
    drawC(x,y,radius);
 
 };
@@ -301,12 +318,24 @@ function print(text) {
   let lista = con.getElementsByTagName('pre');
   if( lista.length === 0 ) {  
     let e = document.createElement('pre');
-    e.style.border = '1px solid #000000';
+    e.style.border = '5px solid lightblue;';
     e.style.color = 'black';
+    e.style.fontFamily = 'Open Sans", sans-serif';
     e.innerText = text + '\n';
     con.appendChild(e);
   } else {
     let e = lista[0];
     e.innerText +=  text + '\n';
   }
+}
+
+//////////////////////////////////////////////////////////////
+
+// Clear canvas
+
+function clearCanvas() {
+let canvas = document.getElementById('myCanvas');
+ctx = canvas.getContext("2d");
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+    print('Clearing the canvas.');
 }
