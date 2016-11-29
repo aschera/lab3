@@ -105,7 +105,7 @@ function toggleMenu() {
 
 // draw polygon function
 function drawP(x,y,x1,y1) {
-print('Choose as many points as you want on the canvas and then press this button again to draw a polygon');
+print('Choose as many points as you want on the canvas and then press this button again to draw a polygon.'  + ' You have currently: ' + pointArray.length + ' points.');
     
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
@@ -142,7 +142,7 @@ function drawingPolygon() {
 //////////////////////////////////////////////////////////////
 // draw rectangle function
 function drawR(x,y,x1,y1) {
-print('Choose two points on the canvas and then press this button again to draw a rectangle');    
+print('Choose two points on the canvas and then press this button again to draw a rectangle.'  + ' You have currently: ' + pointArray.length + ' points.');    
         this.x = x; //A
         this.y = y;
     
@@ -195,7 +195,7 @@ function drawingRectangle() {
  //////////////////////////////////////////////////////////////
 // draw triangle function
 function drawT(x,y,x1,y1,x2,y2) {
-print('Choose three points on the canvas and then press this button again to draw a triangle');    
+print('Choose three points on the canvas and then press this button again to draw a triangle.'  + ' You have currently: ' + pointArray.length + ' points.');    
         this.x = x;
         this.y = y;
         this.x1 = x1;
@@ -261,7 +261,11 @@ function drawC(x,y,radius) {
 
 //mouseclick draw circle 2nd function
 function drawingCircle() {
-print('Choose two points on the canvas and then press this button again to draw a circle');
+    if(pointArray.length <= 1) {
+       print('Choose two points on the canvas and then press this button again to draw a circle.');
+       print('You have currently: ' + pointArray.length + ' points.'); 
+    }
+
     let x = pointArray[0].x;
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
