@@ -283,10 +283,23 @@ function drawingCircle() {
     console.log(shapeC);
     currentShape = shapeC;
 }
+
  //////////////////////////////////////////////////////////////
-  
+
+// showing current points in textfields.
+
+function getCoordinates(x,y) {
+    let h = document.getElementById('wrapper')
+    let g = h.innerHTML += 
+    '<input type="text">\r\n';
+    console.log(g);
+    g.value = x;
+}
+ 
 
 
+
+ //////////////////////////////////////////////////////////////
 // Getting the correct mouse coordinates
 var pointArray=[]; // to hold all the different points in order.
 
@@ -300,6 +313,7 @@ canvas.addEventListener('click', function(event) {
   pointArray.push({x:mouseX1, y:mouseY1});
   print('your point is: ' + mouseX1 + ':x,' + mouseY1 + ':y.');
   let r = event.target.getBoundingClientRect();
+  getCoordinates(mouseX1,mouseY1);
 })
 
 // coordinates
@@ -322,6 +336,7 @@ function relMouseCoords(event){
     return {x:canvasX, y:canvasY}
 }
 HTMLCanvasElement.prototype.relMouseCoords = relMouseCoords;
+
 }
 
 //////////////////////////////////////////////////////////////
@@ -332,9 +347,8 @@ function print(text) {
   let lista = con.getElementsByTagName('pre');
   if( lista.length === 0 ) {  
     let e = document.createElement('pre');
-    e.style.border = '5px solid lightblue;';
+    e.style.backgroundColor = 'lightblue';
     e.style.color = 'black';
-    e.style.fontFamily = 'Open Sans", sans-serif';
     e.innerText = text + '\n';
     con.appendChild(e);
   } else {
