@@ -81,18 +81,22 @@ function toggleMenu() {
     
   var menuBox = document.getElementById('nav-trigger');
   var welcomeBox = document.getElementById('welcome');
-  var instructionBox = document.getElementById('instruction');    
+  var instructionBox = document.getElementById('instruction');
+  var canvasBox = document.getElementById('canvas_box');
+    
   if(menuBox.style.display === "block") { 
     // if is menuBox displayed, hide it
     menuBox.style.display = "none";
     welcomeBox.style.display = "block";
-    instructionBox.style.display = "none";  
+    instructionBox.style.display = "none";
+    canvasBox.style.display = "none";
     print('menu is hidden!');
   }
   else { // if is menuBox hidden, display it
     menuBox.style.display = "block";
     welcomeBox.style.display = "none";
     instructionBox.style.display = "block";
+    canvasBox.style.display = "block";
     print('menu is shown!');
   }
 }
@@ -101,7 +105,8 @@ function toggleMenu() {
 
 // draw polygon function
 function drawP(x,y,x1,y1) {
-
+print('Choose as many points as you want on the canvas and then press this button again to draw a polygon');
+    
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
 
@@ -119,14 +124,14 @@ for( item = 1 ; item < pointArray.length-1 ; item++){
       context.lineWidth = 5;
       context.strokeStyle = lineColor;
       context.stroke();  
+    print('Drawing your polygon.');
   }
 
 //mouseclick draw polygon 2nd function
 function drawingPolygon() {
 
     print('Pressing Draw Polygon button.');
-    print('Drawing your polygon.');
-     
+
     drawP();
     
     var shapeP = new Polygon(pointArray);
@@ -137,7 +142,7 @@ function drawingPolygon() {
 //////////////////////////////////////////////////////////////
 // draw rectangle function
 function drawR(x,y,x1,y1) {
-    
+print('Choose two points on the canvas and then press this button again to draw a rectangle');    
         this.x = x; //A
         this.y = y;
     
@@ -164,7 +169,9 @@ function drawR(x,y,x1,y1) {
       context.fill();
       context.lineWidth = 5;
       context.strokeStyle = lineColor;
-      context.stroke();  
+      context.stroke();
+    
+     print('Drawing your rectangle.');
   }
 
 //mouseclick draw rectangle 2nd function
@@ -175,7 +182,7 @@ function drawingRectangle() {
     let y1 = pointArray[1].y;
     
     print('Pressing Draw Rectangle button.');
-    print('Drawing your rectangle.');
+   
  
     drawR(x,y,x1,y1); 
     
@@ -188,7 +195,7 @@ function drawingRectangle() {
  //////////////////////////////////////////////////////////////
 // draw triangle function
 function drawT(x,y,x1,y1,x2,y2) {
-    
+print('Choose three points on the canvas and then press this button again to draw a triangle');    
         this.x = x;
         this.y = y;
         this.x1 = x1;
@@ -210,6 +217,7 @@ function drawT(x,y,x1,y1,x2,y2) {
       context.lineWidth = 5;
       context.strokeStyle = lineColor;
       context.stroke();  
+    print('Drawing your triangle.');
   }
 
 //mouseclick draw triangle 2nd function
@@ -222,7 +230,7 @@ function drawingTriangle() {
     let y2 = pointArray[2].y;
     
     print('Pressing Draw Triangle button.');
-    print('Drawing your triangle.');
+    
  
     drawT(x,y,x1,y1,x2,y2);
     
@@ -248,10 +256,12 @@ function drawC(x,y,radius) {
       context.lineWidth = 5;
       context.strokeStyle = lineColor;
       context.stroke();  
+    print('Drawing your circle.');
   } 
 
 //mouseclick draw circle 2nd function
 function drawingCircle() {
+print('Choose two points on the canvas and then press this button again to draw a circle');
     let x = pointArray[0].x;
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
@@ -261,7 +271,7 @@ function drawingCircle() {
 		((y-y1)*(y-y1))
 		);
     print('Pressing Draw Circle button.');
-    print('Drawing your circle.');
+    
 
     drawC(x,y,radius); 
     
@@ -339,3 +349,56 @@ ctx = canvas.getContext("2d");
 ctx.clearRect(0, 0, canvas.width, canvas.height);
     print('Clearing the canvas.');
 }
+
+//////////////////////////////////////////////////////////////
+
+// on mouse over functions
+
+//Circle button
+function mouseOverCircle() {
+    document.getElementById("circle_button");
+    print('Starts drawing a circle');
+}
+
+//Triangle button
+function mouseOverTriangle() {
+    document.getElementById("triangle_button");
+    print('Starts drawing a triangle');
+}
+
+//Rectangle button
+function mouseOverRectangle() {
+    document.getElementById("rectangle_button");
+    print('Starts drawing a rectangle');
+}
+
+//Polygon button
+function mouseOverPolygon() {
+    document.getElementById("polygon_button");
+    print('Starts drawing a polygon');
+}
+
+//Clear button
+function mouseOverClear() {
+    document.getElementById("clear_button");
+    print('Press to clear the canvas');
+}
+
+//Export button
+function mouseOverExport() {
+    document.getElementById("export_button");
+    print('Press to export your shape to a JSON string');
+}
+
+//Import button
+function mouseOverImport() {
+    document.getElementById("import_button");
+    print('Press to import your JSON string and paint it on the canvas');
+}
+
+//ADD button
+function mouseOverAddColor() {
+    document.getElementById("add");
+    print('Press to add this color to the select list for the line color');
+}
+//////////////////////////////////////////////////////////////
