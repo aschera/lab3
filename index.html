@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Lab 3 Drawing program</title>
     <link rel="stylesheet" type="text/css" href="lab3.css">
     <link rel="stylesheet" type="text/css" href="nav.css">
     
@@ -32,23 +33,19 @@
     
     <li class="nav-item" id="polygon_button"><a href="#" onclick="drawingPolygon()" onmouseover="mouseOverPolygon()"> <i class="fa fa-window-close-o" aria-hidden="true"></i>&nbsp; Polygon</a></li>
     
-    <br>
-    
-    <li class="nav-item" id="stop_button"><a href="#" onclick="" onmouseover="mouseOverStop()"><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; Stop</a></li>
+    <li class="nav-item" id="stop_button"><a href="#" onclick="stopbutton()" onmouseover="mouseOverStop()"><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; Stop</a></li>
     
     <li class="nav-item" id="clear_button"><a href="#" onclick="clearCanvas()" onmouseover="mouseOverClear()"><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; Clear</a></li>
     
     <li class="menuheading">JSON</li>
     
-    <li><input type="text" id="JSONexport" value="" length="15" placeholder="Your exported JSON string"/></li>
+    <li><input type="text" id="JSONexport" value="" placeholder="Your exported JSON string"/></li>
     
     <li class="nav-item" id="export_button"><a href="#" onclick="exportShape()" onmouseover="mouseOverExport()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Export JSON</a></li>
-    
-   
-    
-    
+
     <li class="nav-item" id="import_button"><a href="#" onclick="importJSON()" onmouseover="mouseOverImport()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; Import JSON</a></li>
-    <li><input type="text" id="import" value="" length="15" placeholder="Enter JSON String"/></li>
+    
+    <li><input type="text" id="import" value="" placeholder="Enter JSON String"/></li>
     
 
 </ul>
@@ -73,7 +70,7 @@
       
       <div id="instruction">
           <br>
-          <h2 id="h2">Options</h2>
+          <h2 id="h2a">Options</h2>
           <div id ="intro">
             
               <h4>Choose points</h4>
@@ -103,7 +100,7 @@
                     var s = document.getElementById('chosen-color');
                     print('Your Inner Color:  ' + s.value);"/>
                     
-                    <input id="chosen-color" type="text" value="#ff0000" length="8" maxlength="7"
+                    <input id="chosen-color" type="text" value="#ff0000" maxlength="7"
                     onkeydown="javascript:
                     if (event.keyCode == 13){ 
                     chosenColor = document.getElementById('chosen-color').value;
@@ -117,9 +114,9 @@
             </div>
           <div>
              <p>
-                <input type="text" id="coord1" value="" length="6" placeholder="Coordinate 1"/>
-                 <input type="text" id="coord2" value="" length="6" placeholder="Coordinate 2"/>
-                 <input type="text" id="coord3" value="" length="6" placeholder="Coordinate 3"/>
+                <input type="text" id="coord1" value="" placeholder="Coordinate 1"/>
+                 <input type="text" id="coord2" value="" placeholder="Coordinate 2"/>
+                 <input type="text" id="coord3" value="" placeholder="Coordinate 3"/>
              </p>
           </div>
         
@@ -133,7 +130,7 @@
   <div class="col-sm-8"> <!--canvas area-->
       <div id="canvasheader">
       <br>
-          <h2 id="h2">Canvas</h2>
+          <h2 id="h2b">Canvas</h2>
       </div>
       <div id="canvas_box" class="canvas_box">
             <canvas id="myCanvas" width="775" height="430">
@@ -188,8 +185,6 @@ function addColorToSelect(){
     print('Added color: ' + s.value + ' to Select menu');
 }
 </script>
-
-
-</div>    
+   
 </body>
 </html>

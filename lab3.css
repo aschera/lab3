@@ -9,7 +9,9 @@
 }
 #canvasheader{display:none;}
 
-#h2 {color:#e6e6dc;}
+#h2a {color:#e6e6dc;}
+
+#h2b {color:#e6e6dc;}
 
 .site{
     background-image: url(bg.jpg);

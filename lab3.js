@@ -1,6 +1,19 @@
 var currentShape = {};
 
+//////////////////////////////////////////////////////////////
+
+// Stop button
+
+function stopbutton() {
+    window.location.reload(false);
+    currentShape = {};
+    pointArray = [];
+}
+
+//////////////////////////////////////////////////////////////
+
 //Export to JSON
+
 function exportShape(){
     print('Pressed Exporting JSON button');
     var canvas = document.getElementById('myCanvas');
@@ -19,6 +32,7 @@ document.getElementById ("JSONexport").value = data;
 
 
 // Import JSON 
+
 function importJSON(){
     var imported = document.getElementById('import').value;
     var canvas = document.getElementById('myCanvas');
