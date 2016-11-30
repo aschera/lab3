@@ -14,7 +14,7 @@
   
   /* non-critical appearance styles */
   list-style: none;
-  background: white;
+  background: E6E6DC;
 }
 
 /* Navigation Menu - List items */
@@ -30,7 +30,7 @@
   display: block;
   padding: 1em;
   background:;
-  color: black;
+  color: #e6e6dc;
   font-size: 1.2em;
   text-decoration: none;
   transition: color 0.2s, background 0.5s;
@@ -47,7 +47,7 @@
   /* Critical position and size styles */
   min-height: 100%;
   min-width: 100%;
-  background-color: white; /* Needs a background or else the nav will show through */
+  background-image: url(bg.jpg);
   position: relative;
   top: 0;
   bottom: 100%;
@@ -55,9 +55,8 @@
   z-index: 1;
   
   /* non-critical apperance styles */
-  padding: 4em;
-  min-height: 1300px;
-  background-size: 200%;
+  padding: 1em;
+  height: 1500px;
 }
 
 /* Nav Trigger */
@@ -77,7 +76,7 @@ label[for="nav-trigger"] {
   height: 30px;
   width: 30px;
   cursor: pointer;
-  background-image:url(menu.jpg);
+  background-image:url(menu.gif);
   background-size: contain;
 }
 
@@ -109,7 +108,7 @@ h1, h3, p {
 
 code {
     padding: 2px;
-    background: #ddd;
+    background: #e5e5dc;
 }
 
 /* Micro reset */

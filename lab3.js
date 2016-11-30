@@ -8,7 +8,12 @@ function exportShape(){
     
     console.log(currentShape instanceof Circle);
     print('Your JSON object has been exported! ' + stringed);
+    insertData(stringed);
 };
+
+function insertData(data) {
+document.getElementById ("JSONexport").value = data;
+}
 
 //////////////////////////////////////////////////////////////
 
@@ -83,6 +88,8 @@ function toggleMenu() {
   var welcomeBox = document.getElementById('welcome');
   var instructionBox = document.getElementById('instruction');
   var canvasBox = document.getElementById('canvas_box');
+  var canvasHeader = document.getElementById('canvasheader');
+  var statusBar = document.getElementById('console');
     
   if(menuBox.style.display === "block") { 
     // if is menuBox displayed, hide it
@@ -90,6 +97,8 @@ function toggleMenu() {
     welcomeBox.style.display = "block";
     instructionBox.style.display = "none";
     canvasBox.style.display = "none";
+    canvasHeader.style.display = "none";
+    statusBar.style.display = "none";
     print('menu is hidden!');
   }
   else { // if is menuBox hidden, display it
@@ -97,6 +106,8 @@ function toggleMenu() {
     welcomeBox.style.display = "none";
     instructionBox.style.display = "block";
     canvasBox.style.display = "block";
+    canvasHeader.style.display = "block";
+    statusBar.style.display = "block";
     print('menu is shown!');
   }
 }
@@ -105,8 +116,6 @@ function toggleMenu() {
 
 // draw polygon function
 function drawP(x,y,x1,y1) {
-print('Choose as many points as you want on the canvas and then press this button again to draw a polygon.'  + ' You have currently: ' + pointArray.length + ' points.');
-    
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
 
@@ -129,7 +138,10 @@ for( item = 1 ; item < pointArray.length-1 ; item++){
 
 //mouseclick draw polygon 2nd function
 function drawingPolygon() {
-
+    
+print('Choose minimum 4 points on the canvas and then press this button again to draw a polygon');
+print('You have: ' + pointArray.length + ' points.');
+    
     print('Pressing Draw Polygon button.');
 
     drawP();
@@ -142,7 +154,8 @@ function drawingPolygon() {
 //////////////////////////////////////////////////////////////
 // draw rectangle function
 function drawR(x,y,x1,y1) {
-print('Choose two points on the canvas and then press this button again to draw a rectangle.'  + ' You have currently: ' + pointArray.length + ' points.');    
+print('Choose two points on the canvas and then press this button again to draw a rectangle');  
+print('You have: ' + pointArray.length + ' points.');
         this.x = x; //A
         this.y = y;
     
@@ -176,14 +189,16 @@ print('Choose two points on the canvas and then press this button again to draw 
 
 //mouseclick draw rectangle 2nd function
 function drawingRectangle() {
+    
+print('Choose two points on the canvas and then press this button again to draw a rectangle');
+print('You have: ' + pointArray.length + ' points.');
     let x = pointArray[0].x;
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
     let y1 = pointArray[1].y;
     
     print('Pressing Draw Rectangle button.');
-   
- 
+    
     drawR(x,y,x1,y1); 
     
     var shapeR = new Rectangle(x,y,x1,y1);
@@ -195,7 +210,7 @@ function drawingRectangle() {
  //////////////////////////////////////////////////////////////
 // draw triangle function
 function drawT(x,y,x1,y1,x2,y2) {
-print('Choose three points on the canvas and then press this button again to draw a triangle.'  + ' You have currently: ' + pointArray.length + ' points.');    
+
         this.x = x;
         this.y = y;
         this.x1 = x1;
@@ -222,6 +237,8 @@ print('Choose three points on the canvas and then press this button again to dra
 
 //mouseclick draw triangle 2nd function
 function drawingTriangle() {
+print('Choose three points on the canvas and then press this button again to draw a triangle');
+print('You have: ' + pointArray.length + ' points.');
     let x = pointArray[0].x;
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
@@ -230,20 +247,20 @@ function drawingTriangle() {
     let y2 = pointArray[2].y;
     
     print('Pressing Draw Triangle button.');
-    
- 
     drawT(x,y,x1,y1,x2,y2);
     
     var shapeT = new Triangle(x,y,x1,y1,x2,y2);
     console.log(shapeT);
     currentShape = shapeT;
 }
+
+    
+  
  //////////////////////////////////////////////////////////////
 
 //draw circle function
 function drawC(x,y,radius) {
-    
-        this.x = x;
+      this.x = x;
         this.y = y;
     
       var canvas = document.getElementById('myCanvas');
@@ -256,16 +273,13 @@ function drawC(x,y,radius) {
       context.lineWidth = 5;
       context.strokeStyle = lineColor;
       context.stroke();  
-    print('Drawing your circle.');
+      print('Drawing your circle.');
   } 
 
 //mouseclick draw circle 2nd function
 function drawingCircle() {
-    if(pointArray.length <= 1) {
-       print('Choose two points on the canvas and then press this button again to draw a circle.');
-       print('You have currently: ' + pointArray.length + ' points.'); 
-    }
-
+print('Choose two points on the canvas and then press this button again to draw a circle');
+print('You have: ' + pointArray.length + ' points.');
     let x = pointArray[0].x;
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
@@ -283,23 +297,10 @@ function drawingCircle() {
     console.log(shapeC);
     currentShape = shapeC;
 }
-
  //////////////////////////////////////////////////////////////
-
-// showing current points in textfields.
-
-function getCoordinates(x,y) {
-    let h = document.getElementById('wrapper')
-    let g = h.innerHTML += 
-    '<input type="text">\r\n';
-    console.log(g);
-    g.value = x;
-}
- 
+  
 
 
-
- //////////////////////////////////////////////////////////////
 // Getting the correct mouse coordinates
 var pointArray=[]; // to hold all the different points in order.
 
@@ -313,7 +314,6 @@ canvas.addEventListener('click', function(event) {
   pointArray.push({x:mouseX1, y:mouseY1});
   print('your point is: ' + mouseX1 + ':x,' + mouseY1 + ':y.');
   let r = event.target.getBoundingClientRect();
-  getCoordinates(mouseX1,mouseY1);
 })
 
 // coordinates
@@ -336,7 +336,6 @@ function relMouseCoords(event){
     return {x:canvasX, y:canvasY}
 }
 HTMLCanvasElement.prototype.relMouseCoords = relMouseCoords;
-
 }
 
 //////////////////////////////////////////////////////////////
@@ -347,8 +346,10 @@ function print(text) {
   let lista = con.getElementsByTagName('pre');
   if( lista.length === 0 ) {  
     let e = document.createElement('pre');
-    e.style.backgroundColor = 'lightblue';
+    e.style.border = '5px solid lightblue;';
     e.style.color = 'black';
+      e.style.width= '90%';
+    e.style.fontFamily = 'Open Sans", sans-serif';
     e.innerText = text + '\n';
     con.appendChild(e);
   } else {
@@ -400,6 +401,12 @@ function mouseOverPolygon() {
 function mouseOverClear() {
     document.getElementById("clear_button");
     print('Press to clear the canvas');
+}
+
+//Stop button
+function mouseOverStop() {
+    document.getElementById("stop_button");
+    print('Press to stop drawing and clear all current settings.');
 }
 
 //Export button

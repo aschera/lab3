@@ -18,7 +18,9 @@
 </head>
 <body>
 <div class="container-fluid">
-  
+    
+  <div class="site">
+      
 <ul class="navigation">
     <li class="menuheading">DRAW</li>
     
@@ -32,14 +34,17 @@
     
     <br>
     
-    <li class="nav-item" id="stop_button"><a href="#" onclick=""><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; Stop</a></li>
+    <li class="nav-item" id="stop_button"><a href="#" onclick="" onmouseover="mouseOverStop()"><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; Stop</a></li>
     
     <li class="nav-item" id="clear_button"><a href="#" onclick="clearCanvas()" onmouseover="mouseOverClear()"><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; Clear</a></li>
     
     <li class="menuheading">JSON</li>
+    
+    <li><input type="text" id="JSONexport" value="" length="15" placeholder="Your exported JSON string"/></li>
+    
     <li class="nav-item" id="export_button"><a href="#" onclick="exportShape()" onmouseover="mouseOverExport()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Export JSON</a></li>
-
-   <br>
+    
+   
     
     
     <li class="nav-item" id="import_button"><a href="#" onclick="importJSON()" onmouseover="mouseOverImport()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; Import JSON</a></li>
@@ -56,21 +61,28 @@
 <!-- instructions-->
     
 <div id="whatwedo">
-    <div id='welcome'><- Open menu to begin.</div>
+    <div id='welcome'>
+        <br><br>
+        
+           <img src="logo.gif" class="logoimage" alt="logo">
+           
+           </div>
 <div class="row"> 
   <div class="col-sm-4"> <!--drawing menu instructions-->
       
       
       <div id="instruction">
           <br>
+          <h2 id="h2">Options</h2>
           <div id ="intro">
             
               <h4>Choose points</h4>
-           <p>  - Circle and Rectangle shapes requires 2 points.<br>
-                - Triangle requires 3 points.<br>
+           <p>  - Click on the canvas to the right to choose points.<br>
+               - Circle and Rectangle shapes requires <strong>2</strong> points.<br>
+                - Triangle requires <strong>3</strong> points.<br>
                 - Polygon shapes can have &#8734; number of points.</p>
           </div>
-            <br>
+            
             <div id="colorsbox">
                 <h4>Choose colors</h4>
                 <p>1: Choose a color for the <strong>line</strong>:
@@ -103,13 +115,14 @@
             </p>
              
             </div>
-          <input type="button" id="more_fields" onclick="add_fields();" value="Add More" />
-          
-    <div class="content" id="wrapper"> 
-    </div>
-</div>
-        <br>
-         <br>
+          <div>
+             <p>
+                <input type="text" id="coord1" value="" length="6" placeholder="Coordinate 1"/>
+                 <input type="text" id="coord2" value="" length="6" placeholder="Coordinate 2"/>
+                 <input type="text" id="coord3" value="" length="6" placeholder="Coordinate 3"/>
+             </p>
+          </div>
+        
       </div>
 
         
@@ -118,14 +131,17 @@
     
     
   <div class="col-sm-8"> <!--canvas area-->
-      
+      <div id="canvasheader">
+      <br>
+          <h2 id="h2">Canvas</h2>
+      </div>
       <div id="canvas_box" class="canvas_box">
-            <canvas id="myCanvas" width="530" height="430">
+            <canvas id="myCanvas" width="775" height="430">
                 This text is displayed if your browser does not support HTML5 Canvas.
             </canvas>
           <p id="info"></p>
         </div>
-            
+        
   </div>  
 </div>
 </div>
@@ -137,12 +153,12 @@
 <div class="row">
   <div class="col-sm-12">
       
-      <div id='console'><pre></pre></div>
+      <div id='console'></div>
   </div>
 </div>    
       
     </div>
-    
+    </div></div>
 
 <script>
 // color menu
