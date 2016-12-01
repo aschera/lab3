@@ -31,12 +31,7 @@ function stopbutton() {
 //Export to JSON
 
 function exportShape(){
-    
-    /*
-    if () {
-        currentShape = shapeP.points(pointArray);
-    } */
-    
+
     print('Pressed Exporting JSON button');
     var canvas = document.getElementById('myCanvas');
     var stringed = JSON.stringify(currentShape);
@@ -55,17 +50,94 @@ document.getElementById ("JSONexport").value = data;
 // Import JSON 
 
 function importJSON(){
-    var imported = document.getElementById('import').value;
-    var canvas = document.getElementById('myCanvas');
-    currentShape = JSON.parse(imported);
+let importedObject = document.getElementById ("import").value;
+let substringC = "radius";
+let substringT = "y1";
+let substringR = "distanceA";
+let substringP = "x4";
+    if (importedObject.indexOf(substringC) !== -1) {
+        console.log('circle');
+        console.log(currentShape.lineColor);
+        importShape();
+    } else if (importedObject.indexOf(substringR) !== -1){
+        console.log('rectangle');
+        importShape2();
+    }else if (importedObject.indexOf(substringP) !== -1){
+        console.log('polygon');
+        importShape3();
+    } else if (importedObject.indexOf(substringT) !== -1){
+        console.log('triangle');
+        importShape1();
+    }
+}
+    
 
+
+//////////////////////////////////////////////////////////////
+
+// Import JSON Circle
+function importShape(){
+    var text = document.getElementById ("import").value;
+    var canvas = document.getElementById('myCanvas');
+    currentShape = JSON.parse(text);
+    
+    lineColor = currentShape.lineColor;
+    
     let x = currentShape.x;
     let y = currentShape.y;
     let radius =   currentShape.radius;
-    print('Your JSON object has been imported! ' + imported);
-   drawC(x,y,radius);
+    print('Your JSON object has been imported!' + text);
+    drawC(x,y,radius,lineColor);
 
 };
+
+// Import JSON Triangle
+function importShape1(){
+    var text = document.getElementById ("import").value;
+    var canvas = document.getElementById('myCanvas');
+    currentShape = JSON.parse(text);
+
+    let x = currentShape.x1;
+    let y = currentShape.y1;
+    let x1 = currentShape.x2;
+    let y1 = currentShape.y2;
+    let x2 = currentShape.x3;
+    let y2 = currentShape.y3;
+    print('Your JSON object has been imported!'  + text);
+   drawT(x,y,x1,y1,x2,y2);
+
+};
+
+// Import JSON Rectangle
+function importShape2(){
+    var text = document.getElementById ("import").value;
+    var canvas = document.getElementById('myCanvas');
+    currentShape = JSON.parse(text);
+
+    let x = currentShape.x1;
+    let y = currentShape.y1;
+    let x1 = currentShape.x2;
+    let y1 = currentShape.y2;
+print('Your JSON object has been imported!'  + text);
+   drawR(x,y,x1,y1);
+};
+
+// Import JSON Polygon 
+/*
+function importShape3(){
+    var text = document.getElementById ("import").value;
+    var canvas = document.getElementById('myCanvas');
+    currentShape = JSON.parse(text);
+
+    for( item = 0 ; item < currentShape.length ; item++){
+            
+        console.log(item);
+        }
+
+   print('Your JSON object has been imported!'  + text);
+   drawP();
+};
+*/
 
 //////////////////////////////////////////////////////////////
 
@@ -103,7 +175,7 @@ function toggleMenu() {
 //////////////////////////////////////////////////////////////
 
 // draw polygon function
-function drawP(x,y,x1,y1) {
+function drawP() {
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
 
@@ -123,9 +195,7 @@ function drawP(x,y,x1,y1) {
             context.strokeStyle = lineColor;
             context.stroke();  
             print('Drawing your polygon.'); 
-        
-        
-      
+    
   }
 
 //mouseclick draw polygon 2nd function
@@ -260,9 +330,10 @@ if(pointArray.length <3) {
  //////////////////////////////////////////////////////////////
 
 //draw circle function
-function drawC(x,y,radius) {
+function drawC(x,y,radius,lineColor) {
       this.x = x;
-        this.y = y;
+      this.y = y;
+      this.lineColor = lineColor;
     
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
@@ -296,9 +367,10 @@ if(pointArray.length <2) {
     print('Pressing Draw Circle button.');
     
 
-    drawC(x,y,radius); 
+    drawC(x,y,radius,lineColor); 
     
-    var shapeC = new Circle(x,y,radius);
+    lineColor = currentShape.lineColor;
+    var shapeC = new Circle(x,y,radius,lineColor);
     console.log(shapeC);
     currentShape = shapeC;
 }}

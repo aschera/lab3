@@ -1,11 +1,13 @@
 /* 1111111111111111111111111111111111111111111111111111111111111 */
 //Protoype Cicle!!!
-function Circle(x, y, radius){
+function Circle(x, y, radius,lineColor){
 	
 	// variables.
 	this.x = x;  
 	this.y = y;
-    this.radius = radius;  
+    this.radius = radius;
+    this.lineColor = lineColor;
+    
     
   	// area method.  
     this.area = function() {return Math.PI * this.radius * this.radius;};  
@@ -240,8 +242,18 @@ function Polygon(points){
 	
 	// points method.
     this.points = function() {
-    	list = points;
-		return list;
+      
+      let list = points;
+      let list2;
+      
+      for (i = 1; i < points.length; i++) {
+        
+        let x= list[i].x;
+        let y= list[i].y;
+        
+        list2 += {x,y};
+      } 
+		return list2;
     }
     
     // move method. 
