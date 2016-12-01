@@ -39,7 +39,7 @@
     
     <li class="menuheading">JSON</li>
     
-    <li><textarea id="JSONexport" value="" placeholder="Your exported JSON string"></textarea> </li>
+    <li><textarea id="JSONexport" value="" placeholder="Your exported JSON string"></textarea></li>
     
     <li class="nav-item" id="export_button"><a href="#" onclick="exportShape()" onmouseover="mouseOverExport()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Export JSON</a></li>
 
@@ -112,14 +112,7 @@
             </p>
              
             </div>
-          <div>
-            <!--  <p>
-                <input type="text" id="coord1" value="" placeholder="Coordinate 1"/>
-                 <input type="text" id="coord2" value="" placeholder="Coordinate 2"/>
-                 <input type="text" id="coord3" value="" placeholder="Coordinate 3"/>
-             </p> -->
-          </div>
-        
+
       </div>
 
         
@@ -129,15 +122,15 @@
     
   <div class="col-sm-8"> <!--canvas area-->
       <div id="canvasheader">
-      <br>
-          <h2 id="h2b">Canvas</h2>
+        <br>
+        <h2 id="h2b">Canvas</h2>
       </div>
       <div id="canvas_box" class="canvas_box">
-            <canvas id="myCanvas" width="775" height="430">
-                This text is displayed if your browser does not support HTML5 Canvas.
-            </canvas>
-          <p id="info"></p>
-        </div>
+        <canvas id="myCanvas" width="675" height="320">
+            This text is displayed if your browser does not support HTML5 Canvas.
+        </canvas>
+          <textarea id="points" value="0" placeholder="points"></textarea>
+      </div>
         
   </div>  
 </div>

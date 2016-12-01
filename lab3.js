@@ -2,6 +2,27 @@ var currentShape = {};
 
 //////////////////////////////////////////////////////////////
 
+// point list
+
+function insertPoints() {
+    
+    let result = ' ';
+    
+    for (let i = 0; i < pointArray.length; i++) {
+        let x = pointArray[i].x;
+        let y = pointArray[i].y;
+        
+        result += ' Point ' + [i+1] + ': ' + [(x),(y)];
+        document.getElementById ("points").value = result;
+    }}
+    /*
+    let one = [(pointArray[0].x), (pointArray[0].y)];
+    document.getElementById ("points").value = 'Point 1:' + one; 
+    */
+
+
+//////////////////////////////////////////////////////////////
+
 // Stop button
 
 function stopbutton() {
@@ -19,7 +40,7 @@ function exportShape(){
     var canvas = document.getElementById('myCanvas');
     var stringed = JSON.stringify(currentShape);
     
-    console.log(currentShape instanceof Circle);
+    console.log(stringed);
     print('Your JSON object has been exported! ' + stringed);
     insertData(stringed);
 };
@@ -46,53 +67,6 @@ function importJSON(){
 
 };
 
-//////////////////////////////////////////////////////////////
-
-// Import JSON Circle
-function importShape(){
-    var text = prompt('Insert JSON object string');
-    var canvas = document.getElementById('myCanvas');
-    currentShape = JSON.parse(text);
-
-    let x = currentShape.x;
-    let y = currentShape.y;
-    let radius =   currentShape.radius;
-    print('Your JSON object has been imported!' + currentShape);
-   drawC(x,y,radius);
-
-};
-
-// Import JSON Triangle
-function importShape1(){
-    var text = prompt('Insert JSON object string');
-    var canvas = document.getElementById('myCanvas');
-    currentShape = JSON.parse(text);
-
-    let x = currentShape.x1;
-    let y = currentShape.y1;
-    let x1 = currentShape.x2;
-    let y1 = currentShape.y2;
-    let x2 = currentShape.x3;
-    let y2 = currentShape.y3;
-    print('Your JSON object has been imported!');
-   drawT(x,y,x1,y1,x2,y2);
-
-};
-
-// Import JSON Rectangle
-function importShape2(){
-    var text = prompt('Insert JSON object string');
-    var canvas = document.getElementById('myCanvas');
-    currentShape = JSON.parse(text);
-
-    let x = currentShape.x1;
-    let y = currentShape.y1;
-    let x1 = currentShape.x2;
-    let y1 = currentShape.y2;
-print('Your JSON object has been imported!');
-   drawR(x,y,x1,y1);
-
-};
 //////////////////////////////////////////////////////////////
 
 //Toggle menu
@@ -134,38 +108,45 @@ function drawP(x,y,x1,y1) {
       var context = canvas.getContext('2d');
 
       context.beginPath();
-     
-context.moveTo(pointArray[0].x, pointArray[0].y);
-for( item = 1 ; item < pointArray.length-1 ; item++){
-    context.lineTo( pointArray[item].x , pointArray[item].y )
-}
+      context.moveTo(pointArray[0].x, pointArray[0].y);
     
-      context.closePath();
+        for( item = 0 ; item < pointArray.length ; item++){
+            context.lineTo( 
+            pointArray[item].x , 
+            pointArray[item].y )
+        }
+           context.closePath();
     
-      context.fillStyle = chosenColor;
-      context.fill();
-      context.lineWidth = 5;
-      context.strokeStyle = lineColor;
-      context.stroke();  
-    print('Drawing your polygon.');
+            context.fillStyle = chosenColor;
+            context.fill();
+            context.lineWidth = 5;
+            context.strokeStyle = lineColor;
+            context.stroke();  
+            print('Drawing your polygon.'); 
+        
+        
+      
   }
 
 //mouseclick draw polygon 2nd function
 function drawingPolygon() {
     
-print('Choose minimum 4 points on the canvas and then press this button again to draw a polygon');
-print('You have: ' + pointArray.length + ' points.');
-    
-    print('Pressing Draw Polygon button.');
+    if(pointArray.length <=3) {
+        print('Choose minimum 4 points on the canvas and then press this button again to draw a polygon');
+        print('You have: ' + pointArray.length + ' points.');
+    } else {
+        print('Pressing Draw Polygon button.');
 
-    drawP();
+        drawP();
     
-    var shapeP = new Polygon(pointArray);
-    console.log(shapeP);
-    currentShape = shapeP;
+        var shapeP = new Polygon(pointArray);
+        console.log(shapeP);
+        currentShape = shapeP; 
+    }   
 }
 
 //////////////////////////////////////////////////////////////
+
 // draw rectangle function
 function drawR(x,y,x1,y1) {
 print('Choose two points on the canvas and then press this button again to draw a rectangle');  
@@ -222,6 +203,7 @@ print('You have: ' + pointArray.length + ' points.');
 
 
  //////////////////////////////////////////////////////////////
+
 // draw triangle function
 function drawT(x,y,x1,y1,x2,y2) {
 
@@ -268,8 +250,6 @@ print('You have: ' + pointArray.length + ' points.');
     currentShape = shapeT;
 }
 
-    
-  
  //////////////////////////////////////////////////////////////
 
 //draw circle function
@@ -311,10 +291,9 @@ print('You have: ' + pointArray.length + ' points.');
     console.log(shapeC);
     currentShape = shapeC;
 }
+
  //////////////////////////////////////////////////////////////
   
-
-
 // Getting the correct mouse coordinates
 var pointArray=[]; // to hold all the different points in order.
 
@@ -327,7 +306,10 @@ canvas.addEventListener('click', function(event) {
   mouseY1 = coords.y;
   pointArray.push({x:mouseX1, y:mouseY1});
   print('your point is: ' + mouseX1 + ':x,' + mouseY1 + ':y.');
+    
   let r = event.target.getBoundingClientRect();
+  
+  insertPoints();
 })
 
 // coordinates
@@ -351,6 +333,7 @@ function relMouseCoords(event){
 }
 HTMLCanvasElement.prototype.relMouseCoords = relMouseCoords;
 }
+
 
 //////////////////////////////////////////////////////////////
 

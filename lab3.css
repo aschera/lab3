@@ -26,9 +26,10 @@
     margin: auto;  /* Magic! */
 }
 
-#coordinate_box {
+#points {
     /*display:none; */
     border: 5px solid lightblue;
+    width: 685px;
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 5px;
@@ -186,7 +187,8 @@ canvas { display: inline; background-color: E6E6DC;}
 }
 #JSONexport {
     font-family: "Open Sans", sans-serif;
-    height: 3em;
+    height: 3.3em;
+    width: 13em;
     font-size: 1em;
     margin-left: 1.3em;
 }
