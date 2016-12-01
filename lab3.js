@@ -12,15 +12,10 @@ function insertPoints() {
         let x = pointArray[i].x;
         let y = pointArray[i].y;
         
-        result += ' Point ' + [i+1] + ': ' + [(x),(y)];
+        result += '// Point ' + [i+1] + ': ' + [(x),(y)] + ' ';
         document.getElementById ("points").value = result;
     }}
-    /*
-    let one = [(pointArray[0].x), (pointArray[0].y)];
-    document.getElementById ("points").value = 'Point 1:' + one; 
-    */
-
-
+   
 //////////////////////////////////////////////////////////////
 
 // Stop button
@@ -36,11 +31,16 @@ function stopbutton() {
 //Export to JSON
 
 function exportShape(){
+    
+    /*
+    if () {
+        currentShape = shapeP.points(pointArray);
+    } */
+    
     print('Pressed Exporting JSON button');
     var canvas = document.getElementById('myCanvas');
     var stringed = JSON.stringify(currentShape);
     
-    console.log(stringed);
     print('Your JSON object has been exported! ' + stringed);
     insertData(stringed);
 };
@@ -129,6 +129,8 @@ function drawP(x,y,x1,y1) {
   }
 
 //mouseclick draw polygon 2nd function
+var shapeP;
+
 function drawingPolygon() {
     
     if(pointArray.length <=3) {
@@ -139,9 +141,9 @@ function drawingPolygon() {
 
         drawP();
     
-        var shapeP = new Polygon(pointArray);
-        console.log(shapeP);
-        currentShape = shapeP; 
+        shapeP = new Polygon(pointArray);
+        console.log(shapeP.points(pointArray));
+        currentShape = shapeP.points(pointArray); 
     }   
 }
 
@@ -149,8 +151,6 @@ function drawingPolygon() {
 
 // draw rectangle function
 function drawR(x,y,x1,y1) {
-print('Choose two points on the canvas and then press this button again to draw a rectangle');  
-print('You have: ' + pointArray.length + ' points.');
         this.x = x; //A
         this.y = y;
     
@@ -184,9 +184,13 @@ print('You have: ' + pointArray.length + ' points.');
 
 //mouseclick draw rectangle 2nd function
 function drawingRectangle() {
+
+if(pointArray.length <2) {
+        print('Choose minimum 2 points on the canvas and then press this button again to draw a rectangle');
+        print('You have: ' + pointArray.length + ' points.');
     
-print('Choose two points on the canvas and then press this button again to draw a rectangle');
-print('You have: ' + pointArray.length + ' points.');
+} else {
+    
     let x = pointArray[0].x;
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
@@ -200,7 +204,7 @@ print('You have: ' + pointArray.length + ' points.');
     console.log(shapeR);
     currentShape = shapeR;
 }
-
+}
 
  //////////////////////////////////////////////////////////////
 
@@ -233,8 +237,11 @@ function drawT(x,y,x1,y1,x2,y2) {
 
 //mouseclick draw triangle 2nd function
 function drawingTriangle() {
-print('Choose three points on the canvas and then press this button again to draw a triangle');
-print('You have: ' + pointArray.length + ' points.');
+if(pointArray.length <3) {
+        print('Choose minimum 2 points on the canvas and then press this button again to draw a triangle');
+        print('You have: ' + pointArray.length + ' points.');
+    
+} else {
     let x = pointArray[0].x;
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
@@ -248,7 +255,7 @@ print('You have: ' + pointArray.length + ' points.');
     var shapeT = new Triangle(x,y,x1,y1,x2,y2);
     console.log(shapeT);
     currentShape = shapeT;
-}
+}}
 
  //////////////////////////////////////////////////////////////
 
@@ -272,8 +279,12 @@ function drawC(x,y,radius) {
 
 //mouseclick draw circle 2nd function
 function drawingCircle() {
-print('Choose two points on the canvas and then press this button again to draw a circle');
-print('You have: ' + pointArray.length + ' points.');
+    
+if(pointArray.length <2) {
+        print('Choose minimum 2 points on the canvas and then press this button again to draw a circle');
+        print('You have: ' + pointArray.length + ' points.');
+    
+} else {
     let x = pointArray[0].x;
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
@@ -290,7 +301,7 @@ print('You have: ' + pointArray.length + ' points.');
     var shapeC = new Circle(x,y,radius);
     console.log(shapeC);
     currentShape = shapeC;
-}
+}}
 
  //////////////////////////////////////////////////////////////
   
