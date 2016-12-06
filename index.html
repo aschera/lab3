@@ -4,82 +4,69 @@
     <title>Lab 3 Drawing program</title>
     <link rel="stylesheet" type="text/css" href="lab3.css">
     <link rel="stylesheet" type="text/css" href="nav.css">
-    
+
     <script type="text/javascript" src="lab3.js"></script>
     <script type="text/javascript" src="lab2.js"></script>
-    
+    <script type="text/javascript" src="shapes.js"></script>
+
     <script src="https://use.fontawesome.com/c0110fafc2.js"></script>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
 </head>
 <body>
-<div class="container-fluid">
-    
-  <div class="site">
-      
-<ul class="navigation">
-    <li class="menuheading">DRAW</li>
-    
-    <li class="nav-item" id="circle_button"><a href="#" onclick="drawingCircle()" onmouseover="mouseOverCircle()"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp; Circle</a></li>
-    
-    <li class="nav-item" id="triangle_button"><a href="#" onclick="drawingTriangle()" onmouseover="mouseOverTriangle()"> <i class="fa fa-caret-up" aria-hidden="true"></i>&nbsp; Triangle</a></li>
-    
-    <li class="nav-item" id="rectangle_button"><a href="#" onclick="drawingRectangle()" onmouseover="mouseOverRectangle()"> <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; Rectangle</a></li>
-    
-    <li class="nav-item" id="polygon_button"><a href="#" onclick="drawingPolygon()" onmouseover="mouseOverPolygon()"> <i class="fa fa-window-close-o" aria-hidden="true"></i>&nbsp; Polygon</a></li>
-    
-    <li class="nav-item" id="stop_button"><a href="#" onclick="stopbutton()" onmouseover="mouseOverStop()"><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; Stop</a></li>
-    
-    <li class="nav-item" id="clear_button"><a href="#" onclick="clearCanvas()" onmouseover="mouseOverClear()"><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; Clear</a></li>
-    
-    <li class="menuheading">JSON</li>
-    
-    <li><textarea id="JSONexport" value="" placeholder="Your exported JSON string"></textarea></li>
-    
-    <li class="nav-item" id="export_button"><a href="#" onclick="exportShape()" onmouseover="mouseOverExport()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Export JSON</a></li>
+<div class="container-fluid"> // bootstrap
 
-    <li class="nav-item" id="import_button"><a href="#" onclick="importJSON()" onmouseover="mouseOverImport()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; Import JSON</a></li>
-    
-    <li><input type="text" id="import" value="" placeholder="Enter JSON String"/></li>
-    
+    <div class="site">
+      <ul class="navigation">
+          <li class="menuheading">DRAW</li>
+          <li class="nav-item" id="circle_button"><a href="#" onclick="drawingCircle()" onmouseover="mouseOverCircle()"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp; Circle</a></li>
+          <li class="nav-item" id="triangle_button"><a href="#" onclick="drawingTriangle()" onmouseover="mouseOverTriangle()"> <i class="fa fa-caret-up" aria-hidden="true"></i>&nbsp; Triangle</a></li>
+          <li class="nav-item" id="rectangle_button"><a href="#" onclick="drawingRectangle()" onmouseover="mouseOverRectangle()"> <i class="fa fa-square-o" aria-hidden="true"></i>&nbsp; Rectangle</a></li>
+          <li class="nav-item" id="polygon_button"><a href="#" onclick="drawingPolygon()" onmouseover="mouseOverPolygon()"> <i class="fa fa-window-close-o" aria-hidden="true"></i>&nbsp; Polygon</a></li>
+          <li class="nav-item" id="stop_button"><a href="#" onclick="stopbutton()" onmouseover="mouseOverStop()"><i class="fa fa-stop" aria-hidden="true"></i>&nbsp; Stop</a></li>
+          <li class="nav-item" id="clear_button"><a href="#" onclick="clearCanvas()" onmouseover="mouseOverClear()"><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; Clear</a></li>
+          <li class="menuheading">JSON</li>
+          <li><textarea id="JSONexport" value="" placeholder="Your exported JSON string"></textarea></li>
+          <li class="nav-item" id="export_button"><a href="#" onclick="exportShape()" onmouseover="mouseOverExport()"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp; Export JSON</a></li>
+          <li class="nav-item" id="import_button"><a href="#" onclick="importJSON()" onmouseover="mouseOverImport()"><i class="fa fa-download" aria-hidden="true"></i>&nbsp; Import JSON</a></li>
+          <li><input type="text" id="import" value="" placeholder="Enter JSON String"/></li>
+      </ul>
 
-</ul>
+  <input type="checkbox" id="nav-trigger" onclick="toggleMenu()" class="nav-trigger" />
+  <label for="nav-trigger"></label>
 
-<input type="checkbox" id="nav-trigger" onclick="toggleMenu()" class="nav-trigger" />
-<label for="nav-trigger"></label>
-    
 <div class="site-wrap">
 
 <!-- instructions-->
-    
+
 <div id="whatwedo">
-    <div id='welcome'>
+
+    <div id='welcome'> <!-- the box on the first page with the logo-->
         <br><br>
-        
-           <img src="logo.gif" class="logoimage" alt="logo">
-           
-           </div>
-<div class="row"> 
+        <img src="logo.gif" class="logoimage" alt="logo">
+    </div>
+
+<div class="row">
   <div class="col-sm-4"> <!--drawing menu instructions-->
-      
-      
+
       <div id="instruction">
           <br>
           <h2 id="h2a">Options</h2>
           <div id ="intro">
-            
               <h4>Choose points</h4>
-           <p>  - Click on the canvas to the right to choose points.<br>
-               - Circle and Rectangle shapes requires <strong>2</strong> points.<br>
+              <p>
+                - Click on the canvas to the right to choose points.<br>
+                - Circle and Rectangle shapes requires <strong>2</strong> points.<br>
                 - Triangle requires <strong>3</strong> points.<br>
-                - Polygon shapes can have &#8734; number of points.</p>
+                - Polygon shapes can have &#8734; number of points.
+              </p>
           </div>
-            
+
             <div id="colorsbox">
                 <h4>Choose colors</h4>
                 <p>1: Choose a color for the <strong>line</strong>:
@@ -90,19 +77,19 @@
                     <option value="hotpink">hotpink</option>
                     <option value="green">green</option>
                     <option value="yellow">yellow</option>
-                </select>  
-          </p>  
-          <p>2: Choose a color for<strong> inside</strong>:  
+                </select>
+          </p>
+          <p>2: Choose a color for<strong> inside</strong>:
               <br>
                     <input id="Ccolor" type="color" value="#ff0000" onchange="javascript:
-                    document.getElementById('chosen-color').value = document.getElementById('Ccolor').value; 
+                    document.getElementById('chosen-color').value = document.getElementById('Ccolor').value;
                     chosenColor = document.getElementById('chosen-color').value;
                     var s = document.getElementById('chosen-color');
                     print('Your Inner Color:  ' + s.value);"/>
-                    
+
                     <input id="chosen-color" type="text" value="#ff0000" maxlength="7"
                     onkeydown="javascript:
-                    if (event.keyCode == 13){ 
+                    if (event.keyCode == 13){
                     chosenColor = document.getElementById('chosen-color').value;
                     var s = document.getElementById('chosen-color');
                     print('Your Inner Color:  ' + s.value);
@@ -110,16 +97,16 @@
                     }"/>
                 <button id="add" onmouseover="mouseOverAddColor()" onclick="addColorToSelect()">ADD</button>
             </p>
-             
+
             </div>
 
       </div>
 
-        
-      
-  </div> 
-    
-    
+
+
+  </div>
+
+
   <div class="col-sm-8"> <!--canvas area-->
       <div id="canvasheader">
         <br>
@@ -131,22 +118,22 @@
         </canvas>
           <textarea id="points" value="0" placeholder="points"></textarea>
       </div>
-        
-  </div>  
+
+  </div>
 </div>
 </div>
 
-    
-    
-    
-    
+
+
+
+
 <div class="row">
   <div class="col-sm-12">
-      
+
       <div id='console'></div>
   </div>
-</div>    
-      
+</div>
+
     </div>
     </div></div>
 
@@ -160,7 +147,7 @@ function colorMenu(event) {
   var text = e.options[e.selectedIndex].text;
   if(e.options[e.selectedIndex].value !== "choice"){
   lineColor = e.options[e.selectedIndex].value;
-  print('Your Line Color:  ' + e.value);   
+  print('Your Line Color:  ' + e.value);
   }
 e.addEventListener('click', colorMenu);
 }
@@ -178,6 +165,6 @@ function addColorToSelect(){
     print('Added color: ' + s.value + ' to Select menu');
 }
 </script>
-   
+
 </body>
 </html>
