@@ -6,7 +6,7 @@
 function drawP() {
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
-
+      this.lineColor = lineColor;
       context.beginPath();
       context.moveTo(pointArray[0].x, pointArray[0].y);
 
@@ -36,19 +36,19 @@ function drawingPolygon() {
         print('You have: ' + pointArray.length + ' points.');
     } else {
         print('Pressing Draw Polygon button.');
-
+        this.lineColor = lineColor;
         drawP();
 
-        shapeP = new Polygon(pointArray);
+        shapeP = new Polygon(pointArray, lineColor);
         console.log(shapeP.points(pointArray));
-        currentShape = shapeP.points(pointArray);
+        currentShape = shapeP.points(pointArray, lineColor);
     }
 }
 
 //////////////////////////////////////////////////////////////
 
 // draw rectangle function
-function drawR(x,y,x1,y1) {
+function drawR(x,y,x1,y1,lineColor) {
         this.x = x; //A
         this.y = y;
 
@@ -56,10 +56,11 @@ function drawR(x,y,x1,y1) {
         this.y1 = y1;
 
         x3 = x1; // B
-	    y3 = y;
+	      y3 = y;
 
-	    x4 = x; // D
-	    y4 = y1;
+	      x4 = x; // D
+	      y4 = y1;
+        this.lineColor = lineColor;
 
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
@@ -93,12 +94,13 @@ if(pointArray.length <2) {
     let y = pointArray[0].y;
     let x1 = pointArray[1].x;
     let y1 = pointArray[1].y;
+    this.lineColor = lineColor;
 
     print('Pressing Draw Rectangle button.');
 
-    drawR(x,y,x1,y1);
+    drawR(x,y,x1,y1,lineColor);
 
-    var shapeR = new Rectangle(x,y,x1,y1);
+    var shapeR = new Rectangle(x,y,x1,y1,lineColor);
     console.log(shapeR);
     currentShape = shapeR;
 }
@@ -107,7 +109,7 @@ if(pointArray.length <2) {
  //////////////////////////////////////////////////////////////
 
 // draw triangle function
-function drawT(x,y,x1,y1,x2,y2) {
+function drawT(x,y,x1,y1,x2,y2,lineColor) {
 
         this.x = x;
         this.y = y;
@@ -115,6 +117,7 @@ function drawT(x,y,x1,y1,x2,y2) {
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
+        this.lineColor = lineColor;
 
       var canvas = document.getElementById('myCanvas');
       var context = canvas.getContext('2d');
@@ -146,13 +149,15 @@ if(pointArray.length <3) {
     let y1 = pointArray[1].y;
     let x2 = pointArray[2].x;
     let y2 = pointArray[2].y;
+    this.lineColor = lineColor;
 
     print('Pressing Draw Triangle button.');
-    drawT(x,y,x1,y1,x2,y2);
+    drawT(x,y,x1,y1,x2,y2,lineColor);
 
-    var shapeT = new Triangle(x,y,x1,y1,x2,y2);
+    var shapeT = new Triangle(x,y,x1,y1,x2,y2,lineColor);
     console.log(shapeT);
     currentShape = shapeT;
+    console.log(lineColor);
 }}
 
  //////////////////////////////////////////////////////////////
@@ -192,12 +197,12 @@ if(pointArray.length <2) {
 		((x -x1)*(x -x1)) +
 		((y-y1)*(y-y1))
 		);
+    this.lineColor = lineColor;
     print('Pressing Draw Circle button.');
-
 
     drawC(x,y,radius,lineColor);
 
-    lineColor = currentShape.lineColor;
+
     var shapeC = new Circle(x,y,radius,lineColor);
     console.log(shapeC);
     currentShape = shapeC;

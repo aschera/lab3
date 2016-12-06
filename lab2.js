@@ -5,9 +5,8 @@ function Circle(x, y, radius,lineColor){
 	// variables.
 	this.x = x;
 	this.y = y;
-    this.radius = radius;
-    this.lineColor = lineColor;
-
+  this.radius = radius;
+  this.lineColor = lineColor;
 
   	// area method.
     this.area = function() {return Math.PI * this.radius * this.radius;};
@@ -58,13 +57,13 @@ function Circle(x, y, radius,lineColor){
 
 /* 222222222222222222222222222222222222222222222222222222222222222222222222222 */
 //Protoype Rectanglee!!!
-function Rectangle(x1, y1, x2, y2){
+function Rectangle(x1, y1, x2, y2, lineColor){
 
 	// variables.
 	this.x1 = x1; // A
 	this.y1 = y1;
 
-    this.x2 = x2; // C
+  this.x2 = x2; // C
 	this.y2 = y2;
 
 	x3 = x2; // B
@@ -72,6 +71,8 @@ function Rectangle(x1, y1, x2, y2){
 
 	x4 = x1; // D
 	y4 = y2;
+
+	this.lineColor = lineColor;
 
 	this.distanceA = Math.sqrt( (x2-x3)*(x2-x3) + (y2-y3)*(y2-y3) ); // distance AC and BD
 
@@ -143,16 +144,17 @@ function Rectangle(x1, y1, x2, y2){
 
 /* 33333333333333333333333333333333333333333333333333333333333333333333 */
 //Protoype Triangle!!!
-function Triangle(x1, y1, x2, y2, x3, y3){
+function Triangle(x1, y1, x2, y2, x3, y3, lineColor){
 
 	// variables.
 	this.x1 = x1;
 	this.y1 = y1;
-    this.x2 = x2;
+  this.x2 = x2;
 	this.y2 = y2;
 	this.x3 = x3;
 	this.y3 = y3;
-
+  this.lineColor = lineColor;
+	
 	// area method.
     this.area = function() {return (1/2)*(x1*y2+x2*y3+x3*y1-x1*y3-x2*y1-x3*y2);};
 
