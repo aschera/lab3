@@ -59,10 +59,10 @@ let importedObject = document.getElementById ("import").value;
 let substringC = "radius";
 let substringT = "y1";
 let substringR = "distanceA";
-let substringP = "x4";
+let substringP = '[{"x":';
 
     if(importedObject === '') {
-      print('You have to enter a JSON string into the textfield and then press this button to import a shape!');
+      print('You have to enter a JSON string into the textfield below first.');
     }
     if (importedObject.indexOf(substringC) !== -1) {
         console.log('circle');
@@ -132,21 +132,25 @@ print('Your JSON object has been imported!'  + text);
 };
 
 // Import JSON Polygon
-/*
+
 function importShape3(){
     var text = document.getElementById ("import").value;
     var canvas = document.getElementById('myCanvas');
+
     currentShape = JSON.parse(text);
 
-    for( item = 0 ; item < currentShape.length ; item++){
 
-        console.log(item);
-        }
+    for( i = 0 ; i < currentShape.length ; i++){
 
-   print('Your JSON object has been imported!'  + text);
-   drawP();
+        let x = currentShape[i].x;
+        let y = currentShape[i].y;
+        pointArray.push({x,y});
+    }
+
+       print('Your JSON object has been imported!'  + text);
+       drawP();
 };
-*/
+
 
 //////////////////////////////////////////////////////////////
 

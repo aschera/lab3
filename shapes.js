@@ -201,4 +201,5 @@ if(pointArray.length <2) {
     var shapeC = new Circle(x,y,radius,lineColor);
     console.log(shapeC);
     currentShape = shapeC;
+    console.log(pointArray);
 }}
